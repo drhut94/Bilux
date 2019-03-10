@@ -48,7 +48,7 @@ public class Movment : MonoBehaviour {
         rb.velocity = speedV2;
         rb.angularVelocity = rotationSpeed;
 
-        //Debug.Log(IsGorunded());
+        Debug.Log(IsGorunded());
     }
 
 
@@ -73,7 +73,6 @@ public class Movment : MonoBehaviour {
                 ((moveHorizontal > 0) && (rb.angularVelocity > 0)))
             {
                 rotationSpeed += acceleration * moveHorizontal * -1;
-                Debug.Log("lol");
             }
 
 
@@ -105,7 +104,7 @@ public class Movment : MonoBehaviour {
     {
         position = rb.position;
         Debug.DrawRay(position, Vector2.down, Color.red, 1, true);
-        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.5f, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.6f, groundLayer);
         
         if(hit.collider != null)
         {
