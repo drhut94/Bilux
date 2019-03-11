@@ -103,7 +103,7 @@ public class Movment : MonoBehaviour {
     public bool IsGorunded()
     {
         position = rb.position;
-        Debug.DrawRay(position, Vector2.down, Color.red, 1, true);
+        Debug.DrawRay(position, Vector2.down * 0.6f, Color.red, 0.1f);
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.6f, groundLayer);
         
         if(hit.collider != null)
