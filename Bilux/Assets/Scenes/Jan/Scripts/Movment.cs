@@ -6,7 +6,9 @@ public class Movment : MonoBehaviour {
 
 
     public float maxVelocity;
+    private float maxVelocityBackup;
     public float acceleration;
+    private float accelerationBackup;
     public float jumpForce;
     private Rigidbody2D rb;
     private float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
@@ -23,6 +25,8 @@ public class Movment : MonoBehaviour {
     void Start () {
 
         rb = GetComponent<Rigidbody2D>();
+        maxVelocityBackup = maxVelocity;
+        accelerationBackup = acceleration;
        
 	}
 	
@@ -45,10 +49,11 @@ public class Movment : MonoBehaviour {
 
         Jump();
 
+        Boost();
+
         rb.velocity = speedV2;
         rb.angularVelocity = rotationSpeed;
 
-        Debug.Log(IsGorunded());
     }
 
 
@@ -137,4 +142,25 @@ public class Movment : MonoBehaviour {
             isJumping = false;
         }
     }
+
+    public void Boost()
+    {
+        if (Input.GetButton("Boost"))
+        {
+            maxVelocity = maxVelocityBackup * 2;
+            acceleration = accelerationBackup * 2;
+
+            if (!IsGorunded()) //Si esta en el aire o saltando
+            {
+                rb.AddForce(speedV2 / 2);
+            }
+        }
+        else
+        {
+            maxVelocity = maxVelocityBackup;
+            acceleration = accelerationBackup;
+        }
+    }
+
+
 }

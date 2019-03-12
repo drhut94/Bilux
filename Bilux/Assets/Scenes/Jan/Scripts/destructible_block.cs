@@ -27,8 +27,8 @@ public class destructible_block : MonoBehaviour {
         //Detecting the Grid Position of Player
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(cc);
-            rb.bodyType = RigidbodyType2D.Dynamic;
+            //Destroy(cc);
+            //rb.bodyType = RigidbodyType2D.Dynamic;
         }
 
     }
