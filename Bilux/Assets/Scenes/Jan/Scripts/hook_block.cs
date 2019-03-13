@@ -9,76 +9,96 @@ public class hook_block : MonoBehaviour {
     private DistanceJoint2D dj;
     private SpriteRenderer sr;
     private LineRenderer lr;
-    
+    public float maxVelocity;
+    private bool isHooked;
+    private GameObject player;
+    private Rigidbody2D rbPlayer;
+    private Movment movment;
+    private Collider2D col;
 
-	void Start () {
+
+
+    void Start () {
 
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         lr = GetComponent<LineRenderer>();
+        dj = GetComponent<DistanceJoint2D>();
         sr.color = Color.red;
         lr.enabled = false;
+        dj.enabled = false;
+        isHooked = false;
     }
 	
 
 	void Update () {
+        
+    }
 
-	}
+    private void FixedUpdate()
+    {
+        if(col != null)
+        {
+            if (col.gameObject.tag == "Player" && Input.GetButtonDown("Jump"))
+            {
+                if (!isHooked && !movment.IsGorunded())
+                {
+                    lr.enabled = true;
+                    dj.enabled = true;
+                    isHooked = true;
+                    Debug.Log("hook!!!");
+                }
+                else if (isHooked)
+                {
+                    dj.enabled = false;
+                    isHooked = false;
+                    lr.enabled = false;
+                    Debug.Log("Deshook!!!");
 
-    private void OnTriggerStay2D(Collider2D col)
+                }
+
+            }
+
+            if (isHooked)
+            {
+                lr.SetPosition(1, new Vector3(rb.position.x, rb.position.y, 0));
+                lr.SetPosition(0, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0));
+
+                if (Input.GetButton("Boost")) //Bost que obtiene al estar usando el gancho
+                {
+                    rbPlayer.AddForce(rbPlayer.velocity);
+
+
+
+                    if (rbPlayer.velocity.magnitude > maxVelocity)
+                    {
+                        rbPlayer.velocity = rbPlayer.velocity.normalized * maxVelocity;
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         sr.color = Color.green;
-        GameObject player = col.gameObject;
-        Rigidbody2D rbPlayer = player.GetComponent<Rigidbody2D>();
-        Movment movment = player.GetComponent<Movment>();
-
-
-        if (col.gameObject.tag == "Player" && Input.GetButtonDown("Jump"))
-        {
-            if (!IsHooked() && !movment.IsGorunded())
-            {
-                lr.enabled = true;
-                dj = gameObject.AddComponent<DistanceJoint2D>();
-                lr.sortingOrder = 1;
-                dj.connectedBody = rbPlayer;
-                dj.maxDistanceOnly = true;
-                dj.enableCollision = true;
-            }
-            else if(IsHooked()){
-                Destroy(dj);
-            }
-            
-        }
-
-        if (IsHooked())
-        {
-            lr.SetPosition(1, new Vector3(rb.position.x, rb.position.y, 0));
-            lr.SetPosition(0, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0));
-        }
-        else
-        {
-            if (GetComponent<LineRenderer>() != null)
-            {
-                lr.enabled = false;
-            }
-        }
+        player = collision.gameObject;
+        rbPlayer = player.GetComponent<Rigidbody2D>();
+        movment = player.GetComponent<Movment>();
+        col = collision;
+        Debug.Log("entrado trigger");
     }
 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         sr.color = Color.red;
+        player = null;
+        rbPlayer = null;
+        movment = null;
+        col = null;
+        Debug.Log("salido trigger");
     }
 
-    public bool IsHooked() //Si el componente de joint no existe significa que no esta usando el hook
-    {
-        if (GetComponent<DistanceJoint2D>() != null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+
 }

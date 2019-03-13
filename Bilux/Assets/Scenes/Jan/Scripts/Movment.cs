@@ -13,13 +13,19 @@ public class Movment : MonoBehaviour {
     private Rigidbody2D rb;
     private float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
     private float rotationSpeed;
-    private Vector2 speedV2;
+    public Vector2 speedV2;
     private Vector2 position; 
     public LayerMask groundLayer;
     private float JumpTimeCounter;
     public float JumpTime;
     private bool isJumping;
-    
+    private float angularVelocity;
+    bool wantsToJump;
+    float timer;
+    private bool move;
+    private bool jump;
+    private bool boost;
+
 
 
     void Start () {
@@ -27,44 +33,43 @@ public class Movment : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         maxVelocityBackup = maxVelocity;
         accelerationBackup = acceleration;
-       
+        move = false;
+        jump = false;
+        boost = false;
 	}
 	
 	void Update () {
 
-
-    }
-
-    private void FixedUpdate()
-    {
-
-
+        Debug.Log(IsGorunded());
         moveHorizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButton("Boost"))
+        {
+            boost = true;
+        }
+        else
+        {
+            boost = false;
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+        }
+        else
+        {
+            jump = false;
+        }
 
         speedV2 = rb.velocity;
         rotationSpeed = rb.angularVelocity;
-        
-
-        Move();
-
-        Jump();
-
-        Boost();
-
-        rb.velocity = speedV2;
-        rb.angularVelocity = rotationSpeed;
-
-    }
 
 
-
-
-    public void Move() //Es publica para que se pueda llamar des de otros scripts para cinematicas
-    {
+        //////////////////////////////////////MOVE
 
         if (moveHorizontal != 0)
         {
-            if (Mathf.Abs(rb.angularVelocity) < maxVelocity * Mathf.Abs(moveHorizontal)) 
+            if (Mathf.Abs(rb.angularVelocity) < maxVelocity * Mathf.Abs(moveHorizontal))
             {
                 rotationSpeed += acceleration * moveHorizontal * -1; // acelerar
             }
@@ -79,10 +84,8 @@ public class Movment : MonoBehaviour {
             {
                 rotationSpeed += acceleration * moveHorizontal * -1;
             }
-
-
         }
-        else if (moveHorizontal == 0 && IsGorunded())
+        else if (moveHorizontal == 0 && IsGorunded() && !IsOnRamp())
         {
             if (rb.angularVelocity > 0)
             {
@@ -103,63 +106,116 @@ public class Movment : MonoBehaviour {
                 }
             }
         }
-    }
 
-    public bool IsGorunded()
-    {
-        position = rb.position;
-        Debug.DrawRay(position, Vector2.down * 0.6f, Color.red, 0.1f);
-        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.6f, groundLayer);
-        
-        if(hit.collider != null)
+        /////////////////////////////////////////////JUMP
+
+        if (jump)
         {
-            return true;
+            wantsToJump = true;
+            timer = 1;
         }
 
-        return false;
-    }
+        if (wantsToJump)
+        {
+            timer -= Time.fixedDeltaTime;
+        }
 
-    public void Jump()
-    {
-        if (IsGorunded() && Input.GetButtonDown("Jump"))
+        if (timer < 0)
+        {
+            wantsToJump = false;
+        }
+
+        if (IsGorunded() && wantsToJump)
         {
             speedV2.y = jumpForce;
             JumpTimeCounter = 0;
             isJumping = true;
         }
 
-        if (Input.GetButton("Jump") && isJumping)
-        {
-            if(JumpTimeCounter < JumpTime)
-            {
-                speedV2.y = jumpForce;
-                JumpTimeCounter += Time.fixedDeltaTime;
-            }
-        }
+        //if (Input.GetButton("Jump") && isJumping)
+        //{
+        //    if(JumpTimeCounter < JumpTime)
+        //    {
+        //        speedV2.y = jumpForce;
+        //        JumpTimeCounter += Time.fixedDeltaTime;
+        //    }
+        //}
 
-        if (Input.GetButtonUp("Jump"))
-        {
-            isJumping = false;
-        }
-    }
+        //if (Input.GetButtonUp("Jump"))
+        //{
+        //    isJumping = false;
+        //}
 
-    public void Boost()
-    {
-        if (Input.GetButton("Boost"))
-        {
-            maxVelocity = maxVelocityBackup * 2;
-            acceleration = accelerationBackup * 2;
+        ////////////////////////////////////////////////BOOST
 
-            if (!IsGorunded()) //Si esta en el aire o saltando
-            {
-                rb.AddForce(speedV2);
-            }
+        if (boost)
+        {
+            maxVelocity = maxVelocityBackup * 1.7f;
+            acceleration = accelerationBackup * 1.7f;
         }
         else
         {
             maxVelocity = maxVelocityBackup;
             acceleration = accelerationBackup;
+
         }
+
+
+
+        rb.velocity = speedV2;
+        rb.angularVelocity = rotationSpeed;
+    }
+
+    private void FixedUpdate()
+    {
+
+
+       
+    }
+
+
+
+
+    public void Move() //Es publica para que se pueda llamar des de otros scripts para cinematicas
+    {
+
+    }
+
+    public bool IsGorunded()
+    {
+        position = rb.position;
+        Debug.DrawRay(position, Vector2.down * 1.0f, Color.red, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.7f, groundLayer);
+        
+        if(hit.collider != null)
+        {
+            return (true);
+        }
+        else
+        {
+        return (false);
+        }
+    }
+
+    public bool IsOnRamp()
+    {
+        position = rb.position;
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.6f, groundLayer);
+
+        if (hit.collider != null)
+        {
+            return (false);
+        }
+        else
+        {
+
+        return (true);
+        }
+    }
+
+    public void Boost()
+    {
+
     }
 
 
