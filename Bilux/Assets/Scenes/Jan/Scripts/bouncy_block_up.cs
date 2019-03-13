@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bouncy_block_up : MonoBehaviour {
 
-
+    public int force;
 
 
 	void Start () {
@@ -22,7 +22,7 @@ public class bouncy_block_up : MonoBehaviour {
         if(col.gameObject.tag == "Player")
         {
             GameObject jugador = col.gameObject;
-            jugador.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
+            jugador.GetComponent<Rigidbody2D>().AddForce(Vector2.up * force);
         }
     }
 }

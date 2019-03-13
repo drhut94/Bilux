@@ -8,39 +8,58 @@ public class hook_block : MonoBehaviour {
     private Rigidbody2D rb;
     private DistanceJoint2D dj;
     private SpriteRenderer sr;
-    private bool canDestroy;
+    private LineRenderer lr;
     
 
 	void Start () {
 
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        lr = GetComponent<LineRenderer>();
         sr.color = Color.red;
-        canDestroy = false;
-	}
+        lr.enabled = false;
+    }
 	
 
 	void Update () {
 
-        if(Input.GetButtonDown("Deshook") && IsHooked())
-        {
-            Destroy(dj);
-
-        }
-        Debug.Log(IsHooked());
 	}
 
     private void OnTriggerStay2D(Collider2D col)
     {
         sr.color = Color.green;
-        Rigidbody2D rbJugador = col.gameObject.GetComponent<Rigidbody2D>();
-        if(col.gameObject.tag == "Player" && Input.GetButtonDown("Jump"))
+        GameObject player = col.gameObject;
+        Rigidbody2D rbPlayer = player.GetComponent<Rigidbody2D>();
+        Movment movment = player.GetComponent<Movment>();
+
+
+        if (col.gameObject.tag == "Player" && Input.GetButtonDown("Jump"))
         {
-            if (!IsHooked())
+            if (!IsHooked() && !movment.IsGorunded())
             {
+                lr.enabled = true;
                 dj = gameObject.AddComponent<DistanceJoint2D>();
-                dj.connectedBody = rbJugador;
+                lr.sortingOrder = 1;
+                dj.connectedBody = rbPlayer;
                 dj.maxDistanceOnly = true;
+                dj.enableCollision = true;
+            }
+            else if(IsHooked()){
+                Destroy(dj);
+            }
+            
+        }
+
+        if (IsHooked())
+        {
+            lr.SetPosition(1, new Vector3(rb.position.x, rb.position.y, 0));
+            lr.SetPosition(0, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0));
+        }
+        else
+        {
+            if (GetComponent<LineRenderer>() != null)
+            {
+                lr.enabled = false;
             }
         }
     }

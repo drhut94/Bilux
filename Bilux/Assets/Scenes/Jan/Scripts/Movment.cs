@@ -152,7 +152,7 @@ public class Movment : MonoBehaviour {
 
             if (!IsGorunded()) //Si esta en el aire o saltando
             {
-                rb.AddForce(speedV2 / 2);
+                rb.AddForce(speedV2);
             }
         }
         else
