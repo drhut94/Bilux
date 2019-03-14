@@ -10,7 +10,7 @@ public class Movment : MonoBehaviour {
     public float acceleration;
     private float accelerationBackup;
     public float jumpForce;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
     private float rotationSpeed;
     public Vector2 speedV2;
@@ -24,15 +24,21 @@ public class Movment : MonoBehaviour {
     float timer;
     private bool move;
     private bool jump;
-    private bool boost;
+    public bool boost;
+    public float boostTime;
+    private float boostTimeBackup;
+    public float boostCooldown;
+    private TrailRenderer tr;
 
 
 
     void Start () {
 
         rb = GetComponent<Rigidbody2D>();
+        tr = GetComponent<TrailRenderer>();
         maxVelocityBackup = maxVelocity;
         accelerationBackup = acceleration;
+        boostTimeBackup = boostTime;
         move = false;
         jump = false;
         boost = false;
@@ -40,12 +46,31 @@ public class Movment : MonoBehaviour {
 	
 	void Update () {
 
-        Debug.Log(IsGorunded());
+        Debug.Log(IsOnRamp());
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButton("Boost"))
         {
-            boost = true;
+            boostTime -= Time.deltaTime;
+
+            if (boostTime <= 0)
+            {
+                boost = false;
+                boostTime = 0;
+            }
+            else
+            {
+                boost = true;
+            }
+        }
+        else
+        {
+            boostTime += boostCooldown / 10;
+
+            if (boostTime > boostTimeBackup)
+            {
+                boostTime = boostTimeBackup;
+            }
         }
 
 
@@ -63,6 +88,11 @@ public class Movment : MonoBehaviour {
 
         speedV2 = rb.velocity;
         rotationSpeed = rb.angularVelocity;
+
+
+
+            tr.time = ((boostTime) / (rb.velocity.magnitude));
+
 
 
         //////////////////////////////////////MOVE
@@ -126,7 +156,7 @@ public class Movment : MonoBehaviour {
             wantsToJump = false;
         }
 
-        if (IsGorunded() && wantsToJump)
+        if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump)
         {
             speedV2.y = jumpForce;
             JumpTimeCounter = 0;
@@ -195,24 +225,24 @@ public class Movment : MonoBehaviour {
 
     public bool IsOnRamp()
     {
-        position = rb.position;
-        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.6f, groundLayer);
-
-        if (hit.collider != null)
+        if (!IsGorunded())
         {
+            position = rb.position;
+            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 1, groundLayer);
+
+            if (hit.collider != null)
+            {
+                return (true);
+            }
+            else
+            {
+
             return (false);
+            }
         }
         else
         {
-
-        return (true);
+            return (false);
         }
     }
-
-    public void Boost()
-    {
-
-    }
-
-
 }

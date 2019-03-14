@@ -4719,7 +4719,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4742,7 +4742,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 779946044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.87, y: 4.01, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2107557019}
@@ -12119,11 +12119,15 @@ MonoBehaviour:
   maxVelocity: 700
   acceleration: 40
   jumpForce: 7
+  rb: {fileID: 0}
   speedV2: {x: 0, y: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   JumpTime: 0.3
+  boost: 0
+  boostTime: 5
+  boostCooldown: 0.1
 --- !u!50 &1755647275
 Rigidbody2D:
   serializedVersion: 4

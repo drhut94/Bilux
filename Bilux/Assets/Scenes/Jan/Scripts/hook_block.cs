@@ -16,6 +16,7 @@ public class hook_block : MonoBehaviour {
     private Movment movment;
     private Collider2D col;
     private bool hook;
+    private bool boost;
 
 
 
@@ -29,24 +30,37 @@ public class hook_block : MonoBehaviour {
         lr.enabled = false;
         dj.enabled = false;
         isHooked = false;
+        hook = false;
+        boost = false;
     }
 	
 
 	void Update () {
-        
+
         if (isHooked)
         {
             lr.SetPosition(1, new Vector3(rb.position.x, rb.position.y, 0));
             lr.SetPosition(0, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0));
         }
+
+        if (Input.GetButtonDown("Jump") && col != null)
+        {
+            hook = true;
+        }
+
+        if (Input.GetButton("Boost"))
+        {
+            boost = true;
+        }
     }
 
     private void FixedUpdate()
     {
-        if(col != null)
+        if (col != null)
         {
-            if (col.gameObject.tag == "Player" && Input.GetButtonDown("Jump"))
+            if (col.gameObject.tag == "Player" && hook)
             {
+                hook = false;
                 if (!isHooked && !movment.IsGorunded())
                 {
                     lr.enabled = true;
@@ -60,15 +74,15 @@ public class hook_block : MonoBehaviour {
                     isHooked = false;
                     lr.enabled = false;
                     Debug.Log("Deshook!!!");
-
                 }
 
             }
 
             if (isHooked)
             {
-                if (Input.GetButton("Boost")) //Bost que obtiene al estar usando el gancho
+                if (boost && movment.boost) //Boost que obtiene al estar usando el gancho
                 {
+                    boost = false;
                     rbPlayer.AddForce(rbPlayer.velocity * 2);
 
 
