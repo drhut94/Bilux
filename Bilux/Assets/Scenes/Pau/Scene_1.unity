@@ -4439,9 +4439,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 341246615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b94adc24ca384a448ba8a17a882805c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a8de12e0fcf2d04a8245ee67803b6dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dbs: {fileID: 341246621}
+  gridLayout: {fileID: 1300792769}
+  player: {fileID: 1755647274}
+  location: {x: 0, y: 0, z: 0}
+  locCell: {x: 0, y: 0, z: 0}
 --- !u!1 &518867653
 GameObject:
   m_ObjectHideFlags: 0
@@ -8879,8 +8884,8 @@ GameObject:
   - component: {fileID: 1755647277}
   - component: {fileID: 1755647276}
   - component: {fileID: 1755647275}
-  - component: {fileID: 1755647274}
   - component: {fileID: 1755647273}
+  - component: {fileID: 1755647274}
   m_Layer: 0
   m_Name: Jugador2
   m_TagString: Player
@@ -8910,15 +8915,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cee480235ef5d54ca88fd91f542f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
   maxVelocity: 700
   acceleration: 40
-  speedV2: {x: 0, y: 0}
   jumpForce: 7
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   JumpTime: 0.3
-  onNitro: 0
 --- !u!50 &1755647275
 Rigidbody2D:
   serializedVersion: 4

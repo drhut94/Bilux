@@ -5,24 +5,21 @@ using UnityEngine;
 public class Mov : MonoBehaviour
 {
 
-    private Rigidbody2D rb;
-    public LayerMask groundLayer;
 
     public float maxVelocity;
+    private float maxVelocityBackup;
     public float acceleration;
+    private float accelerationBackup;
+    public float jumpForce;
+    private Rigidbody2D rb;
     private float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
     private float rotationSpeed;
-    /* private */ public Vector2 speedV2;
+    private Vector2 speedV2;
     private Vector2 position;
-
-    public float jumpForce;
+    public LayerMask groundLayer;
     private float JumpTimeCounter;
     public float JumpTime;
     private bool isJumping;
-
-    private float nitro;
-    public bool onNitro;
-    private float nitroCounter;
 
 
 
@@ -30,13 +27,13 @@ public class Mov : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody2D>();
+        maxVelocityBackup = maxVelocity;
+        accelerationBackup = acceleration;
 
     }
 
     void Update()
     {
-        Debug.DrawRay(position, Vector2.down * 0.6f, Color.red);
-        Nitro();
 
 
     }
@@ -50,16 +47,16 @@ public class Mov : MonoBehaviour
         speedV2 = rb.velocity;
         rotationSpeed = rb.angularVelocity;
 
+
         Move();
 
-        Nitro(); 
-
         Jump();
+
+        Boost();
 
         rb.velocity = speedV2;
         rb.angularVelocity = rotationSpeed;
 
-        Debug.Log(IsGorunded());
     }
 
 
@@ -114,6 +111,7 @@ public class Mov : MonoBehaviour
     public bool IsGorunded()
     {
         position = rb.position;
+        Debug.DrawRay(position, Vector2.down * 0.6f, Color.red, 0.1f);
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.6f, groundLayer);
 
         if (hit.collider != null)
@@ -148,32 +146,24 @@ public class Mov : MonoBehaviour
         }
     }
 
-    public void Nitro()
+    public void Boost()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButton("Boost"))
         {
-            onNitro = true;
-            maxVelocity *= 2;
-            acceleration *= 3;
+            maxVelocity = maxVelocityBackup * 2;
+            acceleration = accelerationBackup * 2;
 
-            if (moveHorizontal != 0)
+            if (!IsGorunded()) //Si esta en el aire o saltando
             {
-                if (Mathf.Abs(rb.angularVelocity) < maxVelocity * Mathf.Abs(moveHorizontal))
-                {
-                    rotationSpeed += acceleration * moveHorizontal * -1; // acelerar
-                }
-
-                if (Mathf.Abs(rotationSpeed) >= maxVelocity * Mathf.Abs(moveHorizontal))
-                {
-                    rotationSpeed = maxVelocity * moveHorizontal * -1; //Mover a velocidad constante
-                }
-
-                if (((moveHorizontal < 0) && (rb.angularVelocity < 0)) ||   //Permite cambiar de direccion mas rapidamente
-                    ((moveHorizontal > 0) && (rb.angularVelocity > 0)))
-                {
-                    rotationSpeed += acceleration * moveHorizontal * -1;
-                }
+                rb.AddForce(speedV2);
             }
         }
+        else
+        {
+            maxVelocity = maxVelocityBackup;
+            acceleration = accelerationBackup;
+        }
     }
+
+
 }
