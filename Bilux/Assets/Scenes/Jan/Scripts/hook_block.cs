@@ -15,6 +15,7 @@ public class hook_block : MonoBehaviour {
     private Rigidbody2D rbPlayer;
     private Movment movment;
     private Collider2D col;
+    private bool hook;
 
 
 
@@ -33,6 +34,11 @@ public class hook_block : MonoBehaviour {
 
 	void Update () {
         
+        if (isHooked)
+        {
+            lr.SetPosition(1, new Vector3(rb.position.x, rb.position.y, 0));
+            lr.SetPosition(0, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0));
+        }
     }
 
     private void FixedUpdate()
@@ -61,12 +67,9 @@ public class hook_block : MonoBehaviour {
 
             if (isHooked)
             {
-                lr.SetPosition(1, new Vector3(rb.position.x, rb.position.y, 0));
-                lr.SetPosition(0, new Vector3(rbPlayer.position.x, rbPlayer.position.y, 0));
-
                 if (Input.GetButton("Boost")) //Bost que obtiene al estar usando el gancho
                 {
-                    rbPlayer.AddForce(rbPlayer.velocity);
+                    rbPlayer.AddForce(rbPlayer.velocity * 2);
 
 
 

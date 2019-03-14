@@ -47,19 +47,19 @@ public class Movment : MonoBehaviour {
         {
             boost = true;
         }
-        else
-        {
-            boost = false;
-        }
+
 
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }
-        else
-        {
-            jump = false;
-        }
+
+
+
+    }
+
+    private void FixedUpdate()
+    {
 
         speedV2 = rb.velocity;
         rotationSpeed = rb.angularVelocity;
@@ -111,8 +111,9 @@ public class Movment : MonoBehaviour {
 
         if (jump)
         {
+            jump = false;
             wantsToJump = true;
-            timer = 1;
+            timer = 0.1f;
         }
 
         if (wantsToJump)
@@ -132,24 +133,25 @@ public class Movment : MonoBehaviour {
             isJumping = true;
         }
 
-        //if (Input.GetButton("Jump") && isJumping)
-        //{
-        //    if(JumpTimeCounter < JumpTime)
-        //    {
-        //        speedV2.y = jumpForce;
-        //        JumpTimeCounter += Time.fixedDeltaTime;
-        //    }
-        //}
+        if (Input.GetButton("Jump") && isJumping)
+        {
+            if (JumpTimeCounter < JumpTime)
+            {
+                speedV2.y = jumpForce;
+                JumpTimeCounter += Time.fixedDeltaTime;
+            }
+        }
 
-        //if (Input.GetButtonUp("Jump"))
-        //{
-        //    isJumping = false;
-        //}
+        if (Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
+        }
 
         ////////////////////////////////////////////////BOOST
 
         if (boost)
         {
+            boost = false;
             maxVelocity = maxVelocityBackup * 1.7f;
             acceleration = accelerationBackup * 1.7f;
         }
@@ -164,13 +166,7 @@ public class Movment : MonoBehaviour {
 
         rb.velocity = speedV2;
         rb.angularVelocity = rotationSpeed;
-    }
 
-    private void FixedUpdate()
-    {
-
-
-       
     }
 
 
@@ -184,8 +180,8 @@ public class Movment : MonoBehaviour {
     public bool IsGorunded()
     {
         position = rb.position;
-        Debug.DrawRay(position, Vector2.down * 1.0f, Color.red, 0.1f);
-        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.7f, groundLayer);
+        Debug.DrawRay(position, Vector2.down * 0.5f, Color.red, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.5f, groundLayer);
         
         if(hit.collider != null)
         {
