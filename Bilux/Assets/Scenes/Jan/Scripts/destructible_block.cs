@@ -5,31 +5,32 @@ using UnityEngine;
 public class destructible_block : MonoBehaviour {
 
 
-    private CompositeCollider2D cc;
-    private Rigidbody2D rb;
-    
+    private BoxCollider2D bc;
 
 
 	void Start () {
-        cc = GetComponent<CompositeCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
-
-        
+        bc = GetComponent<BoxCollider2D>();
 	}
 	
 	
 	void Update () {
-		
-	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+        if (Input.GetButton("Boost"))
+        {
+            bc.isTrigger = true;
+        }
+        else
+        {
+            bc.isTrigger = false;
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Detecting the Grid Position of Player
         if (collision.gameObject.tag == "Player")
         {
-            //Destroy(cc);
-            //rb.bodyType = RigidbodyType2D.Dynamic;
+            Destroy(gameObject);
         }
-
     }
 }

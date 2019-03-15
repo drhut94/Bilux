@@ -46,7 +46,7 @@ public class Movment : MonoBehaviour {
 	
 	void Update () {
 
-        Debug.Log(IsOnRamp());
+        Debug.Log(boost);
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButton("Boost"))
