@@ -6,22 +6,42 @@ public class destructible_block : MonoBehaviour {
 
 
     private BoxCollider2D bc;
+    private Rigidbody2D rb;
+    private bool destroy;
+    private Vector3 v3;
 
 
 	void Start () {
         bc = GetComponent<BoxCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        destroy = false;
+        v3 = new Vector3(0, 0, 0);
 	}
 	
 	
 	void Update () {
 
-        if (Input.GetButton("Boost"))
+        if(bc != null)
         {
-            bc.isTrigger = true;
+            if (Input.GetButton("Boost"))
+            {
+                bc.isTrigger = true;
+            }
+            else
+            {
+                bc.isTrigger = false;
+
+            }
         }
-        else
+
+        if (destroy)
         {
-            bc.isTrigger = false;
+            transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
+
+            if (transform.localScale.x < 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -30,7 +50,14 @@ public class destructible_block : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.AddForce(collision.GetComponent<Rigidbody2D>().velocity * 30);
+            rb.AddTorque(Random.Range(-100, 100));
+            Destroy(bc);
+            destroy = true;
         }
     }
+
+
+
 }
