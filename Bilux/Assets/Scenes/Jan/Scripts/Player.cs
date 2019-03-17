@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    private int health;
+    public int health;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Movment movment;
@@ -18,7 +18,10 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Update () {
-        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
 	}
 
 

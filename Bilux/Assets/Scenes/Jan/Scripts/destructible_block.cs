@@ -23,14 +23,13 @@ public class destructible_block : MonoBehaviour {
 
         if(bc != null)
         {
-            if (Input.GetButton("Boost"))
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Movment>().rb.velocity.magnitude > 9)
             {
                 bc.isTrigger = true;
             }
             else
             {
                 bc.isTrigger = false;
-
             }
         }
 

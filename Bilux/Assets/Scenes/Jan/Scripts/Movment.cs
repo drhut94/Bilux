@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movment : MonoBehaviour {
 
 
+    public bool canInput;
     public float maxVelocity;
     private float maxVelocityBackup;
     public float acceleration;
@@ -42,45 +43,45 @@ public class Movment : MonoBehaviour {
         move = false;
         jump = false;
         boost = false;
+        canInput = true;
 	}
 	
 	void Update () {
 
-        Debug.Log(boost);
+        Debug.Log(rb.velocity.magnitude);
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButton("Boost"))
+        if (canInput)
         {
-            boostTime -= Time.deltaTime;
-
-            if (boostTime <= 0)
+            if (Input.GetButton("Boost"))
             {
-                boost = false;
-                boostTime = 0;
+                boostTime -= Time.deltaTime;
+
+                if (boostTime <= 0)
+                {
+                    boost = false;
+                    boostTime = 0;
+                }
+                else
+                {
+                    boost = true;
+                }
             }
             else
             {
-                boost = true;
-            }
-        }
-        else
-        {
-            boostTime += boostCooldown / 10;
+                boostTime += boostCooldown / 10;
 
-            if (boostTime > boostTimeBackup)
+                if (boostTime > boostTimeBackup)
+                {
+                    boostTime = boostTimeBackup;
+                }
+            }
+
+            if (Input.GetButtonDown("Jump"))
             {
-                boostTime = boostTimeBackup;
+                jump = true;
             }
         }
-
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-        }
-
-
-
     }
 
     private void FixedUpdate()

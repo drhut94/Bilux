@@ -14,7 +14,7 @@ public class destructible_triangle : MonoBehaviour {
 
     void Start()
     {
-
+        pc = GetComponent<PolygonCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         destroy = false;
         v3 = new Vector3(0, 0, 0);
@@ -26,7 +26,7 @@ public class destructible_triangle : MonoBehaviour {
 
         if (pc != null)
         {
-            if (Input.GetButton("Boost"))
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Movment>().rb.velocity.magnitude > 9) 
             {
                 pc.isTrigger = true;
             }
