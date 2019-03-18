@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movment : MonoBehaviour {
 
-
+    
     public bool canInput;
     public float maxVelocity;
     private float maxVelocityBackup;
@@ -48,7 +48,7 @@ public class Movment : MonoBehaviour {
 	
 	void Update () {
 
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         if (canInput)
@@ -229,7 +229,7 @@ public class Movment : MonoBehaviour {
         if (!IsGorunded())
         {
             position = rb.position;
-            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 1, groundLayer);
+            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.7f, groundLayer);
 
             if (hit.collider != null)
             {

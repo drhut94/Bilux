@@ -6,7 +6,6 @@ using UnityEngine.PostProcessing;
 public class color_change : MonoBehaviour {
 
     public PostProcessingProfile PPcolor;
-    private PostProcessingProfile PPcolorBackup;
     private Player script;
     
 
@@ -18,7 +17,8 @@ public class color_change : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         ColorGradingModel.Settings colorSettings = PPcolor.colorGrading.settings;
-        colorSettings.basic.saturation = script.health / 100;
+        colorSettings.basic.saturation = script.health / 100f;
+        Debug.Log(colorSettings.basic.saturation);
         PPcolor.colorGrading.settings = colorSettings;
 	}
 }

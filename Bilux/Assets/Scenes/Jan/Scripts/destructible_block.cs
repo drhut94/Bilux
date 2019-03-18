@@ -21,7 +21,7 @@ public class destructible_block : MonoBehaviour {
 	
 	void Update () {
 
-        if(bc != null)
+        if(bc != null && GameObject.FindGameObjectWithTag("Player") != null)
         {
             if (GameObject.FindGameObjectWithTag("Player").GetComponent<Movment>().rb.velocity.magnitude > 9)
             {
@@ -54,6 +54,7 @@ public class destructible_block : MonoBehaviour {
             rb.AddTorque(Random.Range(-100, 100));
             Destroy(bc);
             destroy = true;
+            //collision.GetComponent<Movment>().rb.velocity;
         }
     }
 

@@ -24,7 +24,7 @@ public class destructible_triangle : MonoBehaviour {
     void Update()
     {
 
-        if (pc != null)
+        if (pc != null && GameObject.FindGameObjectWithTag("Player") != null)
         {
             if (GameObject.FindGameObjectWithTag("Player").GetComponent<Movment>().rb.velocity.magnitude > 9) 
             {
