@@ -24,6 +24,7 @@ public class water : MonoBehaviour {
         damageTimer = 1.5f;
         timer = 0.5f;
         waterVelocity = 75f;
+        damage = 20;
         //
         timerBackup = timer;
         timerOn = false;
