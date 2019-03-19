@@ -18,7 +18,7 @@ public class color_change : MonoBehaviour {
 	void Update () {
         ColorGradingModel.Settings colorSettings = PPcolor.colorGrading.settings;
         colorSettings.basic.saturation = script.health / 100f;
-        Debug.Log(colorSettings.basic.saturation);
+        //Debug.Log(colorSettings.basic.saturation);
         PPcolor.colorGrading.settings = colorSettings;
 	}
 }

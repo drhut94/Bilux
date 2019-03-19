@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Movment : MonoBehaviour {
 
-    
+
+    public bool isInWater;
     public bool canInput;
     public float maxVelocity;
     private float maxVelocityBackup;
@@ -12,7 +13,7 @@ public class Movment : MonoBehaviour {
     private float accelerationBackup;
     public float jumpForce;
     public Rigidbody2D rb;
-    private float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
+    public float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
     private float rotationSpeed;
     public Vector2 speedV2;
     private Vector2 position; 
@@ -44,6 +45,7 @@ public class Movment : MonoBehaviour {
         jump = false;
         boost = false;
         canInput = true;
+        isInWater = false;
 	}
 	
 	void Update () {
@@ -92,7 +94,7 @@ public class Movment : MonoBehaviour {
 
 
 
-            tr.time = ((boostTime) / (rb.velocity.magnitude));
+        tr.time = ((boostTime) / (rb.velocity.magnitude));
 
 
 
@@ -157,7 +159,7 @@ public class Movment : MonoBehaviour {
             wantsToJump = false;
         }
 
-        if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump)
+        if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump || isInWater && wantsToJump)
         {
             speedV2.y = jumpForce;
             JumpTimeCounter = 0;
