@@ -23,7 +23,7 @@ public class destructible_block : MonoBehaviour {
 
         if(bc != null && GameObject.FindGameObjectWithTag("Player") != null)
         {
-            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Movment>().rb.velocity.magnitude > 9)
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Movment>().rb.velocity.magnitude > 8)
             {
                 bc.isTrigger = true;
             }

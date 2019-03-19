@@ -96,6 +96,11 @@ public class Movment : MonoBehaviour {
 
         tr.time = ((boostTime) / (rb.velocity.magnitude));
 
+        if (rb.velocity.magnitude < 2)
+        {
+            tr.time = 1;
+        }
+
 
 
         //////////////////////////////////////MOVE
