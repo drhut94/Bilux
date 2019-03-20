@@ -49,7 +49,7 @@ MonoBehaviour:
   m_MinSize: {x: 646, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 80
+  controlID: 114
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 389
     height: 947
-  m_MinSize: {x: 240, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 242, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 15}
@@ -159,7 +159,7 @@ MonoBehaviour:
 <<<<<<< Updated upstream
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 =======
     width: 1531
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 81
+  controlID: 115
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 221}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 82
+  controlID: 116
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -604,11 +604,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
+<<<<<<< Updated upstream
     - Assets/Scenes/Jan/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
   - Assets/Scenes/Jan/Scripts
+=======
+    - Assets/Scenes/Pau
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/Scenes/Pau
+>>>>>>> Stashed changes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Bilux\Bilux
   m_LockTracker:
@@ -616,6 +624,7 @@ MonoBehaviour:
   m_FolderTreeState:
 <<<<<<< Updated upstream
     scrollPos: {x: 0, y: 148}
+<<<<<<< Updated upstream
     m_SelectedIDs: 460d0000
     m_LastClickedID: 3398
     m_ExpandedIDs: 00000000f40b0000100c0000280c00008a0c00006a0d00004c0e0000aa0e0000420f000000ca9a3bffffff7f
@@ -624,6 +633,11 @@ MonoBehaviour:
     m_SelectedIDs: 16340000
     m_LastClickedID: 13334
     m_ExpandedIDs: 00000000e2330000f2330000083400005c3400000a350000ba350000083600007c36000000ca9a3bffffff7f
+>>>>>>> Stashed changes
+=======
+    m_SelectedIDs: 8a0c0000
+    m_LastClickedID: 3210
+    m_ExpandedIDs: 00000000f40b0000100c0000280c00008a0c00006a0d0000500e0000ae0e0000460f000000ca9a3bffffff7f
 >>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -657,9 +671,13 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_ExpandedIDs: 00000000f40b0000100c0000280c00008a0c00006a0d00004c0e0000aa0e0000420f0000
 =======
     m_ExpandedIDs: 00000000e2330000f2330000083400005c3400000a350000ba350000083600007c360000
+>>>>>>> Stashed changes
+=======
+    m_ExpandedIDs: 00000000f40b0000100c0000280c00008a0c00006a0d0000500e0000ae0e0000460f0000
 >>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -776,23 +794,23 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fca100007ca40000a2a40000
-    m_LastClickedID: 42108
-    m_ExpandedIDs: 18bff3ffeefbffff0000000086110000061200006c120000dc120000ca1300007ca50000
+    m_SelectedIDs: 720d0000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 1693ffff0094ffff9095ffff70a6fffff0e9ffffd8eaffff68ecffffeefbffff00000000cc530000bc54000000560000fa6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Bouncy_blocks_down
-      m_OriginalName: Bouncy_blocks_down
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 4176
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -833,9 +851,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 44.549614, y: -61.98205, z: 8.848467}
+    m_Target: {x: 166.9512, y: -48.42395, z: 7.2382407}
     speed: 2
-    m_Value: {x: 44.549614, y: -61.98205, z: 8.848467}
+    m_Value: {x: 166.9512, y: -48.42395, z: 7.2382407}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -867,9 +885,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 150.27185
+    m_Target: 310.20282
     speed: 2
-    m_Value: 150.27185
+    m_Value: 310.20282
   m_Ortho:
     m_Target: 1
     speed: 2
