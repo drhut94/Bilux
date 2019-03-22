@@ -1,8 +1,0 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Level_Editor/Level_editor.unity
-=======
-- path: Assets/Niveles/Level 2.unity
->>>>>>> master
-  isLoaded: 1
-  isActive: 1
