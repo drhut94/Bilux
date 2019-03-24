@@ -9,6 +9,9 @@ public class Level_Editor : MonoBehaviour {
     public GameObject normalBlock, destructibleBlock, destructibleT1, hookBlock, bouncyBlock;
     private GameObject block;
     private Vector3 mousePos;
+    private GameObject blockInstance;
+    private level_saver levelSaver;
+    private string path;
     public Button normalButton, destructibleButton, destructibleT1Button, hookButton, bouncyButton;
     [HideInInspector]
     public enum BlockName
@@ -20,12 +23,14 @@ public class Level_Editor : MonoBehaviour {
         bouncyBlock
     }
 
+    List<GameObject> blocks = new List<GameObject>();
 
 
 
-
-	void Start ()
+    void Start ()
     {
+        levelSaver = GetComponent<level_saver>(); //Crea la lista (array dinamico)
+        path = Application.persistentDataPath + "/save.dat"; //Indica el path relativo donde se van a guardar los niveles
         normalButton.onClick.AddListener(delegate { SelectBlock(BlockName.normalBlock); });
         destructibleButton.onClick.AddListener(delegate { SelectBlock(BlockName.destructibleBlock); });
         destructibleT1Button.onClick.AddListener(delegate { SelectBlock(BlockName.destructibleTriangle1); });
@@ -33,7 +38,6 @@ public class Level_Editor : MonoBehaviour {
         bouncyButton.onClick.AddListener(delegate { SelectBlock(BlockName.bouncyBlock); });
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -41,8 +45,23 @@ public class Level_Editor : MonoBehaviour {
         {
 
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Instantiate(block, new Vector3(mousePos.x, mousePos.y, 0), new Quaternion(0, 0, 0, 1));
+
+
+
+            
+
+
+            blockInstance = Instantiate(block, new Vector3( (int) mousePos.x, (int) mousePos.y, 0), new Quaternion(0, 0, 0, 1)); //Crea una nueva instancia de un prefab bloque
+
+            blocks.Add(blockInstance); //Añade la instancia del prefab a una lista que despues sera cargada en bytes a un archivo.
         }
+
+        Debug.Log(mousePos.x);
+
+        //if (Input.GetButtonDown("Save"))
+        //{
+        //    byte[] bytes = blocks; 
+        //}
     }
 
     public void SelectBlock(BlockName blockname)
