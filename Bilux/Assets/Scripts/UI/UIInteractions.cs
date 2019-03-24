@@ -5,16 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class UIInteractions : MonoBehaviour {
 
-    public new Camera camera;
     public void LoadLevel()
     {
         SceneManager.LoadScene("Level 2", LoadSceneMode.Single);
     }
-    public void Settings()
+    public void Settings(Transform settingsTrans)
     {
-        float posX = camera.transform.position.x;
-
-        posX = 1924;
-        Debug.Log(posX + "camera");
+        Camera.main.transform.LookAt(settingsTrans.position);
     }
-}
+
+    public void BackButtonMenu(Transform menuTrans)
+    {
+        Camera.main.transform.LookAt(menuTrans.position);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+}   
+
