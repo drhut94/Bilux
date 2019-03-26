@@ -45,8 +45,8 @@ public class water : MonoBehaviour {
         {
             if (movment != null)
             {
-                movment.isInWater = true;
-                movment.GetComponent<Rigidbody2D>().AddTorque(waterVelocity * movment.moveHorizontal * -1);
+                movment.Water = true;
+                movment.GetComponent<Rigidbody2D>().AddTorque(waterVelocity * movment.GetMoveHorizontal() * -1);
             }
             
         }
@@ -84,7 +84,7 @@ public class water : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             movment = collision.GetComponent<Movment>();
-            movment.isInWater = false;
+            movment.Water = false;
             timerOn = false;
             timer = timerBackup;
             takeDamage = false;
