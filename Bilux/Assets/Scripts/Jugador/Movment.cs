@@ -49,7 +49,6 @@ public class Movment : MonoBehaviour {
 	
 	void Update () {
 
-        Debug.Log(CollidingWithGround());
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         if (CanInput)
@@ -163,7 +162,7 @@ public class Movment : MonoBehaviour {
             wantsToJump = false;
         }
 
-        if (IsGorunded() && wantsToJump && CollidingWithGround() || IsOnRamp() && wantsToJump && CollidingWithGround() || Water && wantsToJump)
+        if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump || Water && wantsToJump)
         {
             speedV2.y = jumpForce;
             JumpTimeCounter = 0;
@@ -201,31 +200,31 @@ public class Movment : MonoBehaviour {
         rb.angularVelocity = rotationSpeed;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer == groundLayer)
-        {
-            groundCollsion = true;
-        }
-        else
-        {
-            groundCollsion = false;
-        }
-    }
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.layer == groundLayer)
+    //    {
+    //        groundCollsion = true;
+    //    }
+    //    else
+    //    {
+    //        groundCollsion = false;
+    //    }
+    //}
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == groundLayer)
-        {
-            groundCollsion = false;
-        }
-    }
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.layer == groundLayer)
+    //    {
+    //        groundCollsion = false;
+    //    }
+    //}
 
-    public bool CollidingWithGround()
-    {
-        if (groundCollsion == true)     return true;
-        else                            return false;
-    }
+    //public bool CollidingWithGround()
+    //{
+    //    if (groundCollsion == true)     return true;
+    //    else                            return false;
+    //}
 
     public bool IsGorunded()
     {
