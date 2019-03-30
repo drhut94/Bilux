@@ -5,24 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class UIInteractions : MonoBehaviour {
 
+    public GameObject menu;
     public void LoadLevel()
     {
         SceneManager.LoadScene("Level 2", LoadSceneMode.Single);
     }
 
-    public void Settings(Transform settingsTrans)
+    public void Settings(GameObject settings)
     {
-        Camera.main.transform.LookAt(settingsTrans.position);
+        settings.SetActive(true);
+        menu.SetActive(false);
     }
 
-    public void Selector(Transform selectorTrans)
+    public void Selector(GameObject selector)
     {
-        Camera.main.transform.LookAt(selectorTrans.position);
+        selector.SetActive(true);
+        menu.SetActive(false);
     }
 
-    public void BackMenu(Transform menuTrans)
+    public void BackMenu(GameObject UI)
     {
-        Camera.main.transform.LookAt(menuTrans.position);
+        UI.SetActive(false);
+        menu.SetActive(true);
     }
 
     public void QuitGame()
