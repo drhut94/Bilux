@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Movment movment;
+    public GameObject fireTrail;
+    public GameObject normalTrail;
     
 
 	void Start () {
@@ -22,6 +24,8 @@ public class Player : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        trail();
 	}
 
 
@@ -34,5 +38,19 @@ public class Player : MonoBehaviour {
     public int GetHealth
     {
         get { return health; }
+    }
+
+    public void trail()
+    {
+        if (Input.GetButton("Boost"))
+        {
+            fireTrail.gameObject.SetActive(true);
+            normalTrail.gameObject.SetActive(false);
+        }
+        else
+        {
+            fireTrail.gameObject.SetActive(false);
+            normalTrail.gameObject.SetActive(true);
+        }
     }
 }
