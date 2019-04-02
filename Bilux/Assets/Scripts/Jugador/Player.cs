@@ -10,14 +10,18 @@ public class Player : MonoBehaviour {
     private Movment movment;
     public GameObject fireTrail;
     public GameObject normalTrail;
-    
+    public GameObject damageIndicator; //<--Assign in inspector.
+    public float damageDuration = 0.1f; //<--Show canvas for this duration each hit.
 
-	void Start () {
+
+
+    void Start () {
         health = 100;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         movment = GetComponent<Movment>();
-	}
+        HideDamageIndicator();
+    }
 	
 	void Update () {
         if (health <= 0)
@@ -33,6 +37,9 @@ public class Player : MonoBehaviour {
     public void SetHealth(int damage)
     {
         health -= damage;
+        ShowDamageIndicator();
+        CancelInvoke("HideDamageIndicator"); //<--Resets timer if hit before indicator is hidden.
+        Invoke("HideDamageIndicator", damageDuration);
     }
 
     public int GetHealth
@@ -52,5 +59,15 @@ public class Player : MonoBehaviour {
             fireTrail.gameObject.SetActive(false);
             normalTrail.gameObject.SetActive(true);
         }
+    }
+
+    void ShowDamageIndicator()
+    {
+        damageIndicator.SetActive(true);
+    }
+
+   void HideDamageIndicator()
+    {
+        damageIndicator.SetActive(false);
     }
 }

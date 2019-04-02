@@ -21,10 +21,10 @@ public class water : MonoBehaviour {
     void Start()
     {
         // fer bé
-        damageTimer = 1.5f;
+        damageTimer = 0.5f;
         timer = 0.5f;
-        waterVelocity = 75f;
-        damage = 20;
+        waterVelocity = 150f;
+        damage = 5;
         //
         timerBackup = timer;
         timerOn = false;
@@ -75,7 +75,7 @@ public class water : MonoBehaviour {
             player = collision.GetComponent<Player>();
             timerOn = true;
             takeDamage = true;
-
+            player.SetHealth(damage);
         }
     }
 
