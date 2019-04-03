@@ -63,7 +63,6 @@ public class water : MonoBehaviour {
                 }
             }
         }
-        Debug.Log(damageTimer);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
