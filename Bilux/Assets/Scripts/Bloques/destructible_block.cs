@@ -9,6 +9,7 @@ public class destructible_block : MonoBehaviour {
     private Rigidbody2D rb;
     private bool destroy;
     private Vector3 v3;
+    public float destructVelocity;
 
 
 	void Start () {
@@ -23,7 +24,7 @@ public class destructible_block : MonoBehaviour {
 
         if(bc != null && GameObject.FindGameObjectWithTag("Player") != null)
         {
-            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Movment>().rb.velocity.magnitude > 8)
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Movment>().rb.velocity.magnitude > destructVelocity)
             {
                 bc.isTrigger = true;
             }
