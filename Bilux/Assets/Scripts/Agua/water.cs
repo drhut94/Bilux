@@ -21,10 +21,10 @@ public class water : MonoBehaviour {
     void Start()
     {
         // fer bé
-        damageTimer = 0.5f;
-        timer = 0.5f;
-        waterVelocity = 150f;
-        damage = 5;
+        //damageTimer = 0.5f;
+        //timer = 0.5f;
+        //waterVelocity = 150f;
+        //damage = 5;
         //
         timerBackup = timer;
         timerOn = false;
