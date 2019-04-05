@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class Level_Editor : MonoBehaviour {
 
@@ -46,22 +47,15 @@ public class Level_Editor : MonoBehaviour {
 
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-
-
-            
-
-
             blockInstance = Instantiate(block, new Vector3( (int) mousePos.x, (int) mousePos.y, 0), new Quaternion(0, 0, 0, 1)); //Crea una nueva instancia de un prefab bloque
 
             blocks.Add(blockInstance); //Añade la instancia del prefab a una lista que despues sera cargada en bytes a un archivo.
         }
 
-        Debug.Log(mousePos.x);
-
-        //if (Input.GetButtonDown("Save"))
-        //{
-        //    byte[] bytes = blocks; 
-        //}
+        if (Input.GetButtonDown("Save"))
+        {
+            GuardaNivel();
+        }
     }
 
     public void SelectBlock(BlockName blockname)
@@ -84,5 +78,19 @@ public class Level_Editor : MonoBehaviour {
                 block = bouncyBlock;
                 break;
         }
+    }
+
+    public void GuardaNivel()
+    {
+        StreamWriter text = new StreamWriter("text.txt", true);
+
+        for (int i = 0; i < blocks.Count; i++)
+        {
+            //File.WriteAllText("text.txt", string.Empty);
+           
+           text.WriteLine(blocks[i].name + "," + blocks[i].transform.position.x.ToString() + "," + blocks[i].transform.position.y.ToString() + "," + blocks[i].transform.position.z.ToString() + "," + blocks[i].transform.rotation.ToString() + ";;", false);
+
+        }
+        text.Close();
     }
 }
