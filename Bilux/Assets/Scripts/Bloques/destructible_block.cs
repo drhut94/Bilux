@@ -10,11 +10,14 @@ public class destructible_block : MonoBehaviour {
     private bool destroy;
     private Vector3 v3;
     public float destructVelocity;
+    private AudioSource aSource;
+    public AudioClip destructSound;
 
 
 	void Start () {
         bc = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        aSource = GetComponent<AudioSource>();
         destroy = false;
         v3 = new Vector3(0, 0, 0);
 	}
@@ -50,6 +53,7 @@ public class destructible_block : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            aSource.PlayOneShot(destructSound);
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.AddForce(collision.GetComponent<Rigidbody2D>().velocity * 30);
             rb.AddTorque(Random.Range(-100, 100));

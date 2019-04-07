@@ -13,6 +13,7 @@ public class Movment : MonoBehaviour {
     public float boostTime;
     public float boostCooldown;
 
+
     [HideInInspector]
     public Rigidbody2D rb;
 
