@@ -21,10 +21,10 @@ public class water : MonoBehaviour {
     void Start()
     {
         // fer bé
-        damageTimer = 1.5f;
-        timer = 0.5f;
-        waterVelocity = 75f;
-        damage = 20;
+        //damageTimer = 0.5f;
+        //timer = 0.5f;
+        //waterVelocity = 150f;
+        //damage = 5;
         //
         timerBackup = timer;
         timerOn = false;
@@ -45,8 +45,8 @@ public class water : MonoBehaviour {
         {
             if (movment != null)
             {
-                movment.isInWater = true;
-                movment.GetComponent<Rigidbody2D>().AddTorque(waterVelocity * movment.moveHorizontal * -1);
+                movment.Water = true;
+                movment.GetComponent<Rigidbody2D>().AddTorque(waterVelocity * movment.GetMoveHorizontal() * -1);
             }
             
         }
@@ -63,7 +63,6 @@ public class water : MonoBehaviour {
                 }
             }
         }
-        Debug.Log(damageTimer);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,7 +74,7 @@ public class water : MonoBehaviour {
             player = collision.GetComponent<Player>();
             timerOn = true;
             takeDamage = true;
-
+            player.SetHealth(damage);
         }
     }
 
@@ -84,7 +83,7 @@ public class water : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             movment = collision.GetComponent<Movment>();
-            movment.isInWater = false;
+            movment.Water = false;
             timerOn = false;
             timer = timerBackup;
             takeDamage = false;

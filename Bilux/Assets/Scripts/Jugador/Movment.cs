@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class Movment : MonoBehaviour {
 
-
-    public bool isInWater;
-    public bool canInput;
     public float maxVelocity;
-    private float maxVelocityBackup;
     public float acceleration;
-    private float accelerationBackup;
     public float jumpForce;
-    public Rigidbody2D rb;
-    public float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
-    private float rotationSpeed;
-    public Vector2 speedV2;
-    private Vector2 position; 
     public LayerMask groundLayer;
-    private float JumpTimeCounter;
     public float JumpTime;
-    private bool isJumping;
-    private float angularVelocity;
-    bool wantsToJump;
-    float timer;
-    private bool move;
-    private bool jump;
     public bool boost;
     public float boostTime;
-    private float boostTimeBackup;
     public float boostCooldown;
-    private TrailRenderer tr;
 
+
+    [HideInInspector]
+    public Rigidbody2D rb;
+
+    private float maxVelocityBackup;
+    private float accelerationBackup;
+    private float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
+    private float rotationSpeed;
+    private Vector2 speedV2;
+    private Vector2 position; 
+    private float JumpTimeCounter;
+    private bool isJumping;
+    private float angularVelocity;
+    private bool wantsToJump;
+    private float timer;
+    private bool jump;
+    private float boostTimeBackup;
+    private TrailRenderer tr;
+    private bool groundCollsion;
 
 
     void Start () {
@@ -41,19 +41,18 @@ public class Movment : MonoBehaviour {
         maxVelocityBackup = maxVelocity;
         accelerationBackup = acceleration;
         boostTimeBackup = boostTime;
-        move = false;
         jump = false;
         boost = false;
-        canInput = true;
-        isInWater = false;
+        CanInput = true;
+        Water = false;
+        groundCollsion = false;
 	}
 	
 	void Update () {
 
-        //Debug.Log(rb.velocity.magnitude);
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-        if (canInput)
+        if (CanInput)
         {
             if (Input.GetButton("Boost"))
             {
@@ -164,7 +163,7 @@ public class Movment : MonoBehaviour {
             wantsToJump = false;
         }
 
-        if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump || isInWater && wantsToJump)
+        if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump || Water && wantsToJump)
         {
             speedV2.y = jumpForce;
             JumpTimeCounter = 0;
@@ -197,23 +196,36 @@ public class Movment : MonoBehaviour {
         {
             maxVelocity = maxVelocityBackup;
             acceleration = accelerationBackup;
-
         }
-
-
-
         rb.velocity = speedV2;
         rb.angularVelocity = rotationSpeed;
-
     }
 
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.layer == groundLayer)
+    //    {
+    //        groundCollsion = true;
+    //    }
+    //    else
+    //    {
+    //        groundCollsion = false;
+    //    }
+    //}
 
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.layer == groundLayer)
+    //    {
+    //        groundCollsion = false;
+    //    }
+    //}
 
-
-    public void Move() //Es publica para que se pueda llamar des de otros scripts para cinematicas
-    {
-
-    }
+    //public bool CollidingWithGround()
+    //{
+    //    if (groundCollsion == true)     return true;
+    //    else                            return false;
+    //}
 
     public bool IsGorunded()
     {
@@ -243,8 +255,7 @@ public class Movment : MonoBehaviour {
                 return (true);
             }
             else
-            {
-
+            { 
             return (false);
             }
         }
@@ -252,5 +263,19 @@ public class Movment : MonoBehaviour {
         {
             return (false);
         }
+    }
+
+    public bool Water { get; set; } //Funcion muy guai para hacer getters y seters de manera muy simple
+
+    public bool CanInput { get; set; }
+
+    public float GetMoveHorizontal ()
+    {
+        return moveHorizontal;
+    }
+
+    public Vector2 GetDirection()
+    {
+        return speedV2;
     }
 }

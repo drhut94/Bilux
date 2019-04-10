@@ -26,6 +26,7 @@ public class hook_block : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         lr = GetComponent<LineRenderer>();
         dj = GetComponent<DistanceJoint2D>();
+        dj.connectedBody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         sr.color = Color.red;
         lr.enabled = false;
         dj.enabled = false;

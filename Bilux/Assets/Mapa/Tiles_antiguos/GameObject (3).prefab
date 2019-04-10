@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 33979412823289370}
   - component: {fileID: 61334611918915656}
   - component: {fileID: 253666455103068240}
-  - component: {fileID: 114164299058345782}
+  - component: {fileID: 114025373867707534}
   m_Layer: 4
   m_Name: GameObject (3)
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114164299058345782
+--- !u!114 &114025373867707534
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -123,6 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d1b0892a3168543a92739bc66f40d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0.5
+  waterVelocity: 150
+  damageTimer: 0.5
+  damage: 5
 --- !u!114 &114445098721220466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,7 +162,7 @@ BuoyancyEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_SurfaceLevel: 1
-  m_Density: 2
+  m_Density: 2.5
   m_LinearDrag: 5
   m_AngularDrag: 5
   m_FlowAngle: 0
