@@ -8,10 +8,12 @@ public class Moving_Block : MonoBehaviour {
     public float Xspeed;
     public float Yspeed;
     CircleCollider2D cc;
+    Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
         cc = GetComponent<CircleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -28,7 +30,9 @@ public class Moving_Block : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
         {
-            transform.position += new Vector3(Xspeed / 100, Yspeed / 100, 0);
+            //transform.position += new Vector3(Xspeed / 100, Yspeed / 100, 0);
+            rb.transform.position += new Vector3(Xspeed / 100, Yspeed / 100, 0);
+
         }
     }
 }
