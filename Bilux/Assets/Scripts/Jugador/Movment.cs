@@ -163,6 +163,8 @@ public class Movment : MonoBehaviour {
             wantsToJump = false;
         }
 
+
+
         if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump || Water && wantsToJump)
         {
             speedV2.y = jumpForce;

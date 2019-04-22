@@ -10,9 +10,11 @@ public class MovmentV2 : MonoBehaviour {
     private float horizontalInput;
     private Rigidbody2D rb;
     private Vector2 speedV2;
+    private Vector2 position;
     private float rotationSpeed;
     private float maxVelocityBackup;
-    private float accelerationBackup;
+    private float accelerationBackup;   
+    private bool timer;
 
 
     private enum State
@@ -25,12 +27,14 @@ public class MovmentV2 : MonoBehaviour {
 
     State state;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        maxVelocityBackup = maxVelocity;
-        accelerationBackup = acceleration;
-    }
+    //    void Start()
+    //    {
+    //        rb = GetComponent<Rigidbody2D>();
+    //        maxVelocityBackup = maxVelocity;
+    //    accelerationBackup = wantsToJump = true;
+    //    timer = 0.1f; cceleration;
+    //    timer = false;
+    //}
 
     void Update()
     {
@@ -88,18 +92,33 @@ public class MovmentV2 : MonoBehaviour {
     {
         if (rb.angularVelocity > 0)
         {
-            rotationSpeed -= acceleration;
 
-            if (rotationSpeed < 0)
+            if (rotationSpeed > maxVelocity)
+            {
+                rotationSpeed -= (acceleration * 1.2f);
+            }
+            else
+            {
+                rotationSpeed -= acceleration;
+            }
+
+            if (rotationSpeed <= 0)
             {
                 rotationSpeed = 0;
             }
         }
         else if (rb.angularVelocity < 0)
         {
-            rotationSpeed += acceleration;
+            if (rotationSpeed < maxVelocity)
+            {
+                rotationSpeed += (acceleration * 1.2f);
+            }
+            else
+            {
+                rotationSpeed += acceleration;
+            }
 
-            if (rotationSpeed > 0)
+            if (rotationSpeed >= 0)
             {
                 rotationSpeed = 0;
             }
@@ -135,11 +154,29 @@ public class MovmentV2 : MonoBehaviour {
             acceleration = accelerationBackup * 1.7f;
     }
 
-
-    
-
     private void Jump()
     {
-
+        timer = true;
+        Invoke("Timer", 2); 
     }
+
+    private void Timer()
+    {
+        timer = false;
+    }
+
+    //private bool CanJump()
+    //{
+        
+    //}
+
+    //private bool IsGrounded()
+    //{
+
+    //}
+
+    //private bool IsOnRamp()
+    //{
+    //    if()
+    //}
 }
