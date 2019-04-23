@@ -572,7 +572,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.322483, y: 4.0243864}
+  m_Offset: {x: 5.0064316, y: 4.0243864}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -583,7 +583,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.644966, y: 9.048773}
+  m_Size: {x: 4.6293793, y: 9.048773}
   m_EdgeRadius: 0
 --- !u!4 &109185504
 Transform:
@@ -592,7 +592,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 109185502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -139.75, y: -11.86, z: -0.1640625}
+  m_LocalPosition: {x: -158.17, y: -11.86, z: -0.1640625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -609,7 +609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cc6e77362c4464ca99e66f82a220f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyPart: {fileID: 0}
+  text: {fileID: 1962004674}
+  storyPart: {fileID: 11400000, guid: c6acdd87e69c6074aaa55994b7ee3414, type: 2}
 --- !u!1 &127529567 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1130627156770002, guid: 7e031145b7e803846b0538c8e4502789,
@@ -2383,6 +2384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cc6e77362c4464ca99e66f82a220f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
   storyPart: {fileID: 0}
 --- !u!1 &533260107
 GameObject:
@@ -3409,19 +3411,19 @@ Prefab:
       objectReference: {fileID: 1395753382}
     - target: {fileID: 4127067968041208, guid: e7cef691e94840e498670425ebce1ccf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.9638977
+      value: -159.7
       objectReference: {fileID: 0}
     - target: {fileID: 4127067968041208, guid: e7cef691e94840e498670425ebce1ccf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.1676378
+      value: -8.3
       objectReference: {fileID: 0}
     - target: {fileID: 4982739489469862, guid: e7cef691e94840e498670425ebce1ccf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.9638977
+      value: -159.7
       objectReference: {fileID: 0}
     - target: {fileID: 4982739489469862, guid: e7cef691e94840e498670425ebce1ccf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.1676378
+      value: -8.3
       objectReference: {fileID: 0}
     - target: {fileID: 4127067968041208, guid: e7cef691e94840e498670425ebce1ccf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4015,7 +4017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cc6e77362c4464ca99e66f82a220f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyPart: {fileID: 0}
+  text: {fileID: 1962004674}
+  storyPart: {fileID: 11400000, guid: dbb9dcbb60a00c84ba86ddc3514a6b15, type: 2}
 --- !u!61 &941389866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4028,7 +4031,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.322483, y: 4.0243864}
+  m_Offset: {x: 0.9483566, y: 4.0243864}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4039,7 +4042,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.644966, y: 9.048773}
+  m_Size: {x: 2.8967133, y: 9.048773}
   m_EdgeRadius: 0
 --- !u!4 &941389867
 Transform:
@@ -4048,7 +4051,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 941389864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -95.33, y: -11.86, z: -0.1640625}
+  m_LocalPosition: {x: -140.93, y: -11.86, z: -0.1640625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11401,11 +11404,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4956811317875900, guid: 9459c7cd2251ff745824a0fb23485872, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.9638977
+      value: -159.7
       objectReference: {fileID: 0}
     - target: {fileID: 4956811317875900, guid: 9459c7cd2251ff745824a0fb23485872, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.1676378
+      value: -8.3
       objectReference: {fileID: 0}
     - target: {fileID: 4956811317875900, guid: 9459c7cd2251ff745824a0fb23485872, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12829,7 +12832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1962004673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12845,8 +12848,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -71.5, y: -206}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -151.31, y: -45.45}
+  m_SizeDelta: {x: 319.61, y: 189.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962004674
 MonoBehaviour:
@@ -12860,7 +12863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12868,11 +12871,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 5d42cb6c6ecd5df42940f06bf3c6b4aa, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
