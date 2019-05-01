@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TriggerStory : MonoBehaviour {
 
-    public Text text;
+    public TextMesh text;
 
     [SerializeField]
     private StoryManager storyPart;
