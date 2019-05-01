@@ -53,17 +53,42 @@ public class hook_block : MonoBehaviour {
         {
             boost = true;
         }
+
+
     }
 
     private void FixedUpdate()
     {
+        if (player == null)
+        {
+            dj.enabled = false;
+            isHooked = false;
+            lr.enabled = false;
+            Debug.Log("Deshook!!!");
+            hook = false;
+            sr.color = Color.red;
+            player = null;
+            rbPlayer = null;
+            movment = null;
+            col = null;
+        }
+
         if (col != null)
         {
+            if (Input.GetButtonDown("Reload"))
+            {
+                dj.enabled = false;
+                isHooked = false;
+                lr.enabled = false;
+                Debug.Log("Deshook!!!");
+            }
+
             if (col.gameObject.tag == "Player" && hook)
             {
                 hook = false;
                 if (!isHooked && !movment.IsGorunded())
                 {
+                    FindObjectOfType<AudioManager>().PlaySound("hook");
                     lr.enabled = true;
                     dj.enabled = true;
                     isHooked = true;
@@ -75,6 +100,7 @@ public class hook_block : MonoBehaviour {
                     isHooked = false;
                     lr.enabled = false;
                     Debug.Log("Deshook!!!");
+                    FindObjectOfType<AudioManager>().PlaySound("deshook");
                 }
 
             }

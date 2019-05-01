@@ -56,26 +56,24 @@ public class Movment : MonoBehaviour {
         {
             if (Input.GetButton("Boost"))
             {
-                boostTime -= Time.deltaTime;
+                boost = true;
 
-                if (boostTime <= 0)
-                {
-                    boost = false;
-                    boostTime = 0;
-                }
-                else
-                {
-                    boost = true;
-                }
             }
             else
             {
-                boostTime += boostCooldown / 10;
+                boost = false;
+            }
 
-                if (boostTime > boostTimeBackup)
-                {
-                    boostTime = boostTimeBackup;
-                }
+            if (Input.GetButtonDown("Boost"))
+            {
+                FindObjectOfType<AudioManager>().PlaySound("boost");
+                FindObjectOfType<AudioManager>().PlaySound("boostStart");
+            }
+
+            if (Input.GetButtonUp("Boost"))
+            {
+                FindObjectOfType<AudioManager>().PlaySound("boostEnd");
+                FindObjectOfType<AudioManager>().StopSound("boost", 0.0f);
             }
 
             if (Input.GetButtonDown("Jump"))
@@ -167,6 +165,7 @@ public class Movment : MonoBehaviour {
 
         if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump || Water && wantsToJump)
         {
+            FindObjectOfType<AudioManager>().PlaySound("jump");
             speedV2.y = jumpForce;
             JumpTimeCounter = 0;
             isJumping = true;
@@ -280,4 +279,11 @@ public class Movment : MonoBehaviour {
     {
         return speedV2;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        FindObjectOfType<AudioManager>().PlaySound("land");
+    }
+
+
 }

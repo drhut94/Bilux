@@ -12,9 +12,9 @@ public class restartScene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown("Reload"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+		//if (Input.GetButtonDown("Reload"))
+  //      {
+  //          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+  //      }
 	}
 }

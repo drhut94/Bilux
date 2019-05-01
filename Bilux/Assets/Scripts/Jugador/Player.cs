@@ -11,8 +11,6 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Movment movment;
-    public GameObject fireTrail;
-    public GameObject normalTrail;
     public GameObject damageIndicator; //<--Assign in inspector.
     public float damageDuration; //<--Show canvas for this duration each hit.
     public float recoveryDuration; //<--Show canvas for this duration each hit.
@@ -20,6 +18,9 @@ public class Player : MonoBehaviour {
     float healthTime;
     float healthTimeBackup;
     Vector2 recoveryVelocity;
+    public Vector2 initPlayerPos;
+    public ParticleSystem normalTrail;
+    public ParticleSystem[] fireTrail;
 
     void Start() {
         maxHealth = 100;
@@ -35,14 +36,28 @@ public class Player : MonoBehaviour {
         colorIndicator = damageIndicator.GetComponent<Image>();
         healthTimeBackup = healthTime;
         recoveryVelocity = new Vector2(0f, 0f);
+        initPlayerPos = gameObject.transform.position;
+
+        for (int i = 0; i < fireTrail.Length; i++)
+        {
+            fireTrail[i].Stop();
+        }
 
     }
 
     void Update() {
         if (health <= 0)
         {
-            Destroy(gameObject);
+            FindObjectOfType<AudioManager>().StopSound("music_level3", 0.0f);
+            FindObjectOfType<AudioManager>().PlaySound("die");
+            gameObject.SetActive(false);
         }
+
+        //if (Input.GetButtonDown("Reload"))
+        //{
+        //    gameObject.transform.position = initPlayerPos;
+        //    gameObject.SetActive(true);
+        //}
 
         trail();
         Debug.Log(healthTime);
@@ -86,15 +101,21 @@ public class Player : MonoBehaviour {
 
     public void trail()
     {
-        if (Input.GetButton("Boost"))
+        if (Input.GetButtonDown("Boost"))
         {
-            fireTrail.gameObject.SetActive(true);
-            normalTrail.gameObject.SetActive(false);
+            for(int i = 0; i < fireTrail.Length; i++)
+            {
+                fireTrail[i].Play();
+            }
+            normalTrail.Stop();
         }
-        else
+        if (Input.GetButtonUp("Boost"))
         {
-            fireTrail.gameObject.SetActive(false);
-            normalTrail.gameObject.SetActive(true);
+            for (int i = 0; i < fireTrail.Length; i++)
+            {
+                fireTrail[i].Stop();
+            }
+            normalTrail.Play();
         }
     }
 
@@ -114,5 +135,40 @@ public class Player : MonoBehaviour {
         SetHealth(recover);
         if (health > maxHealth)
         health = maxHealth;
+    }
+
+    public void InitPlayer()
+    {
+        maxHealth = 100;
+        health = maxHealth;
+        recovery = 5;
+        healthTime = 1f;
+        damageDuration = 0.6f;
+        recoveryDuration = 1.1f;
+        rb.velocity = new Vector2(0.0f, 0.0f);
+        FindObjectOfType<AudioManager>().PlayMusic("music_level3", 1.0f);
+
+        for (int i = 0; i < fireTrail.Length; i++)
+        {
+            fireTrail[i].Stop();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Checkpoint")
+        {
+            FindObjectOfType<AudioManager>().PlaySound("checkpoint");
+            initPlayerPos = transform.position;
+            collision.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "BouncyBlock")
+        {
+            FindObjectOfType<AudioManager>().PlaySound("bounce");
+        }
     }
 }

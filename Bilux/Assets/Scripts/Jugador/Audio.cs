@@ -17,16 +17,16 @@ public class Audio : MonoBehaviour {
 	
 
 
-	void Update () {
+	//void Update () {
 		
-        if (movment.IsGorunded() && Input.GetButtonDown("Jump"))
-        {
-            jumpSound.PlayOneShot(jump);
-        }
-	}
+ //       if (movment.IsGorunded() && Input.GetButtonDown("Jump"))
+ //       {
+ //           jumpSound.PlayOneShot(jump);
+ //       }
+	//}
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        jumpSound.PlayOneShot(land);
-    }
+ //   private void OnCollisionEnter2D(Collision2D collision)
+ //   {
+ //       jumpSound.PlayOneShot(land);
+ //   }
 }

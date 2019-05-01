@@ -53,7 +53,7 @@ public class destructible_block : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            aSource.PlayOneShot(destructSound);
+            FindObjectOfType<AudioManager>().PlaySound("explosion");
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.AddForce(collision.GetComponent<Rigidbody2D>().velocity * 30);
             rb.AddTorque(Random.Range(-100, 100));
