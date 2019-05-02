@@ -49,6 +49,7 @@ public class AudioManager : MonoBehaviour {
         {
             if(sounds[i].name == name)
             {
+                sounds[i].source.volume = 1;
                 sounds[i].source.Play();
             }
         }
@@ -80,17 +81,13 @@ public class AudioManager : MonoBehaviour {
 
     IEnumerator FadeOutSound (object[] param)
     {
-
-
-
-
         while (sounds[(int)param[0]].source.volume > 0.0f)
         {
             sounds[(int)param[0]].source.volume -= Time.deltaTime / (float)param[1];
             yield return null;
         }
             sounds[(int)param[0]].source.Stop();
-
+        sounds[(int)param[0]].source.Stop();
     }
 
     IEnumerator FadeInSound (object[] param)
