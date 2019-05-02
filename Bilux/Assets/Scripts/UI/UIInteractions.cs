@@ -23,6 +23,11 @@ public class UIInteractions : MonoBehaviour {
         SceneManager.LoadScene("Level 3", LoadSceneMode.Single);
     }
 
+    public void LoadTutorial()
+    {
+        SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
+    }
+
     public void Settings(GameObject settings)
     {
         settings.SetActive(true);
