@@ -8,20 +8,20 @@ public class UIInteractions : MonoBehaviour {
 
     public GameObject menu;
     
-    public void LoadLevel1()
-    {
-        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
-    }
+    //public void LoadLevel1()
+    //{
+    //    SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+    //}
 
-    public void LoadLevel2()
-    {
-        SceneManager.LoadScene("Level 2", LoadSceneMode.Single);
-    }
+    //public void LoadLevel2()
+    //{
+    //    SceneManager.LoadScene("Level 2", LoadSceneMode.Single);
+    //}
 
-    public void LoadLevel3()
-    {
-        SceneManager.LoadScene("Level 3", LoadSceneMode.Single);
-    }
+    //public void LoadLevel3()
+    //{
+    //    SceneManager.LoadScene("Level 3", LoadSceneMode.Single);
+    //}
 
     public void Settings(GameObject settings)
     {
@@ -46,9 +46,9 @@ public class UIInteractions : MonoBehaviour {
         Application.Quit();
     }
 
-    public void LoadEditor()
-    {
-        SceneManager.LoadScene("demo", LoadSceneMode.Single);
-    }
+    //public void LoadEditor()
+    //{
+    //    SceneManager.LoadScene("demo", LoadSceneMode.Single);
+    //}
 }   
 
