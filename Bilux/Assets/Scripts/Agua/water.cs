@@ -15,7 +15,7 @@ public class water : MonoBehaviour {
     private float damageTimerBackup;
     public int damage;
     private bool takeDamage;
-    
+
 
     // Use this for initialization
     void Start()
@@ -24,7 +24,7 @@ public class water : MonoBehaviour {
         //damageTimer = 0.5f;
         //timer = 0.5f;
         //waterVelocity = 150f;
-        //damage = 5;
+        damage = 30;
         //
         timerBackup = timer;
         timerOn = false;
@@ -35,7 +35,7 @@ public class water : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+
         if (timerOn)
         {
             timer -= Time.deltaTime;
@@ -48,7 +48,7 @@ public class water : MonoBehaviour {
                 movment.Water = true;
                 movment.GetComponent<Rigidbody2D>().AddTorque(waterVelocity * movment.GetMoveHorizontal() * -1);
             }
-            
+
         }
 
         if (takeDamage)
@@ -63,7 +63,19 @@ public class water : MonoBehaviour {
                 }
             }
         }
+
+        if (Input.GetButtonDown("Reload"))
+        {
+            movment.Water = false;
+            timerOn = false;
+            timer = timerBackup;
+            takeDamage = false;
+            damageTimer = damageTimerBackup;
+        }
     }
+
+    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -85,8 +85,9 @@ public class Player : MonoBehaviour {
             CancelInvoke("HideDamageIndicator"); //<--Resets timer if hit before indicator is hidden.
             Invoke("HideDamageIndicator", damageDuration);
         }
-        else if (damage < 0)
+        else if (damage <= 0)
         {
+            health = 0;
             colorIndicator.color = new Color32(0, 255, 0, 100);
             ShowDamageIndicator();
             CancelInvoke("HideDamageIndicator"); //<--Resets timer if hit before indicator is hidden.

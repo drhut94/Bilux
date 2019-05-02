@@ -8,6 +8,11 @@ public class Pause : MonoBehaviour {
 
     public Canvas pause;
 
+    private void Awake()
+    {
+        Continue();
+    }
+
     public void Exit()
     {
         SceneManager.LoadScene("menu");
