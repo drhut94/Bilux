@@ -59,7 +59,7 @@ public class hook_block : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (player == null)
+        if (!player.active)
         {
             dj.enabled = false;
             isHooked = false;
