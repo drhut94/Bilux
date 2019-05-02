@@ -147,7 +147,7 @@ public class Player : MonoBehaviour {
         damageDuration = 0.6f;
         recoveryDuration = 1.1f;
         rb.velocity = new Vector2(0.0f, 0.0f);
-        FindObjectOfType<AudioManager>().PlayMusic("music_level3", 1.0f);
+        FindObjectOfType<AudioManager>().PlayMusic(FindObjectOfType<AudioManager>().musicName, 1.0f);
 
         for (int i = 0; i < fireTrail.Length; i++)
         {
