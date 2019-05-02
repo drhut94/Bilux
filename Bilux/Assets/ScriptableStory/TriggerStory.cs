@@ -8,7 +8,7 @@ public class TriggerStory : MonoBehaviour {
     public TextMesh text;
 
     [SerializeField]
-    private StoryManager storyPart;
+    private StoryContainer storyPart;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,7 +35,7 @@ public class TriggerStory : MonoBehaviour {
         foreach (char letter in sentence.ToCharArray())
         {
             text.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(0.02f);//return null;
         }
     }
 
