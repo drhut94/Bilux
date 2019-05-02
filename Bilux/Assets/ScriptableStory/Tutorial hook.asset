@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc0d8094904e11498e2dcf511ab1b23, type: 3}
   m_Name: Tutorial hook
   m_EditorClassIdentifier: 
-  storyText: "While inside the hooking area\npress SPACE in the air to hook\n\u2192
-    \u2192 \u2192 \u2192 \u2192 "
+  storyText: 'While inside the hooking area
+
+    press SPACE in the air to hook
+
+    press SPACE again to release'
