@@ -7,21 +7,22 @@ public class AudioManager : MonoBehaviour {
 
     public Sound[] sounds;
     public static AudioManager instance;
+    public string musicName;
 
 	// Use this for initialization
 	void Awake () {
 
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
 		for (int i = 0; i < sounds.Length; i++)
         {
@@ -36,7 +37,7 @@ public class AudioManager : MonoBehaviour {
 
     public void Start()
     {
-        FindObjectOfType<AudioManager>().PlayMusic("music_level3", 0.0f);
+        FindObjectOfType<AudioManager>().PlayMusic(musicName, 0.0f);
 
         //StartCoroutine("StopSound", new object);
 
