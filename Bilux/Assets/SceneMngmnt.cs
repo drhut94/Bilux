@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scene : MonoBehaviour {
+public class SceneMngmnt : MonoBehaviour {
 
 
     public Player player;
