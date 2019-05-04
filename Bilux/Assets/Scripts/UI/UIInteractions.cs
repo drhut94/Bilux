@@ -40,6 +40,12 @@ public class UIInteractions : MonoBehaviour {
         menu.SetActive(false);
     }
 
+    public void SelectorBack(GameObject selector)
+    {
+        selector.SetActive(false);
+        menu.SetActive(true);
+    }
+
     public void BackMenu(GameObject UI)
     {
         UI.SetActive(false);
