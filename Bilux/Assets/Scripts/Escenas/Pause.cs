@@ -15,7 +15,8 @@ public class Pause : MonoBehaviour {
 
     public void Exit()
     {
-        SceneManager.LoadScene("menu");
+        SceneManager.LoadScene(0);
+        Continue();
     }
 
     public void Continue()
@@ -24,7 +25,6 @@ public class Pause : MonoBehaviour {
             Time.timeScale = 1f;
 
         pause.gameObject.SetActive(false);
-
     }
     public void Restart()
     {
@@ -33,15 +33,22 @@ public class Pause : MonoBehaviour {
 
         Continue();
     }
+
+    void PauseGame()
+    {
+        if (Time.timeScale == 1f)
+        {
+            Time.timeScale = 0f;
+            pause.gameObject.SetActive(true);
+        }
+        else if (Time.timeScale == 0f)
+            Continue();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (Time.timeScale == 1f)
-                Time.timeScale = 0f;
-
-            pause.gameObject.SetActive(true);
-        }
+            PauseGame();
     }
 }
