@@ -10,6 +10,7 @@ using System.Collections.Generic;
 
 public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    public static bool[] visible = new bool[4];
 
     [Tooltip("Set starting page index - starting from 0")]
     public int startingPage = 0;
@@ -41,7 +42,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
 
     // number of pages in container
     private int _pageCount;
-    private int _currentPage;
+    public static int _currentPage;
 
     // whether lerping is in progress and target lerp position
     private bool _lerp;
@@ -64,6 +65,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     //------------------------------------------------------------------------
     void Start()
     {
+        for (int i = 0; i < visible.Length; i++)
+        {
+            visible[i] = false;
+        }
+        visible[0] = true;
+
         _scrollRectComponent = GetComponent<ScrollRect>();
         _scrollRectRect = GetComponent<RectTransform>();
         _container = _scrollRectComponent.content;
@@ -103,11 +110,12 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     //------------------------------------------------------------------------
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.RightArrow))
-            LerpToPage(_currentPage + 1);
+            NextScreen();
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
-            LerpToPage(_currentPage - 1);
+            PreviousScreen();
 
         // if moving to target position
         if (_lerp)
@@ -265,12 +273,22 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     private void NextScreen()
     {
         LerpToPage(_currentPage + 1);
+        for (int i = 0; i < visible.Length; i++)
+        {
+            visible[i] = false;
+        }
+        visible[_currentPage] = true;
     }
 
     //------------------------------------------------------------------------
     private void PreviousScreen()
     {
         LerpToPage(_currentPage - 1);
+        for (int i = 0; i < visible.Length; i++)
+        {
+            visible[i] = false;
+        }
+        visible[_currentPage] = true;
     }
 
     //------------------------------------------------------------------------
