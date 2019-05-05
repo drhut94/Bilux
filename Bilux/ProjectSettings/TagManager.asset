@@ -8,6 +8,8 @@ TagManager:
   - BouncyBlock
   - DestructibleBlock
   - Final
+  - hook
+  - spyke
   layers:
   - Default
   - TransparentFX

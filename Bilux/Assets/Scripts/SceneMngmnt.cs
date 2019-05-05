@@ -18,6 +18,7 @@ public class SceneMngmnt : MonoBehaviour {
             player.transform.position = player.initPlayerPos;
             player.InitPlayer();
             player.gameObject.SetActive(true);
+            FindObjectOfType<color_change>().ChangeScreenColor(1);
         }
     }
 }

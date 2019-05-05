@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movment : MonoBehaviour {
 
     public float maxVelocity;
+    public float maxHookVelocity;
     public float acceleration;
     public float jumpForce;
     public LayerMask groundLayer;
@@ -31,11 +32,16 @@ public class Movment : MonoBehaviour {
     private bool jump;
     private float boostTimeBackup;
     private TrailRenderer tr;
-    private bool groundCollsion;
+    public bool groundCollsion;
+    private DistanceJoint2D dj;
+    private LineRenderer lr;
+    private bool wantsToHook;
 
 
     void Start () {
 
+        lr = GetComponent<LineRenderer>();
+        dj = GetComponent<DistanceJoint2D>();
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
         maxVelocityBackup = maxVelocity;
@@ -46,6 +52,7 @@ public class Movment : MonoBehaviour {
         CanInput = true;
         Water = false;
         groundCollsion = false;
+        wantsToHook = false;
 	}
 	
 	void Update () {
@@ -80,6 +87,11 @@ public class Movment : MonoBehaviour {
             {
                 jump = true;
             }
+
+            if (Input.GetButtonDown("Jump") && !IsGorunded())
+            {
+                wantsToHook = true;
+            }
         }
     }
 
@@ -97,6 +109,7 @@ public class Movment : MonoBehaviour {
         {
             tr.time = 1;
         }
+
 
 
 
@@ -148,7 +161,7 @@ public class Movment : MonoBehaviour {
         {
             jump = false;
             wantsToJump = true;
-            timer = 0.1f;
+            timer = 0.2f;
         }
 
         if (wantsToJump)
@@ -163,7 +176,7 @@ public class Movment : MonoBehaviour {
 
 
 
-        if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump || Water && wantsToJump)
+        if (IsGorunded() && wantsToJump && groundCollsion || IsOnRamp() && wantsToJump && groundCollsion || Water && wantsToJump && groundCollsion)
         {
             FindObjectOfType<AudioManager>().PlaySound("jump");
             speedV2.y = jumpForce;
@@ -198,6 +211,17 @@ public class Movment : MonoBehaviour {
             maxVelocity = maxVelocityBackup;
             acceleration = accelerationBackup;
         }
+
+        if (dj.isActiveAndEnabled && Input.GetButton("Boost"))
+        {
+            rb.AddForce(rb.velocity * 2);
+            Debug.Log(rb.velocity.magnitude);
+            if (rb.velocity.magnitude > 10)
+            {
+                speedV2 = rb.velocity.normalized * 10;
+            }
+        }
+
         rb.velocity = speedV2;
         rb.angularVelocity = rotationSpeed;
     }
@@ -266,6 +290,26 @@ public class Movment : MonoBehaviour {
         }
     }
 
+    private void Hook(Collider2D collider)
+    {
+        if (!IsGorunded())
+        {
+            if (dj.isActiveAndEnabled)
+            {
+                FindObjectOfType<AudioManager>().PlaySound("deshook");
+                dj.enabled = false;
+                lr.enabled = false;
+            }
+            else if (!dj.isActiveAndEnabled)
+            {
+                FindObjectOfType<AudioManager>().PlaySound("hook");
+                dj.connectedAnchor = collider.transform.position;
+                dj.enabled = true;
+                lr.enabled = true;
+            }
+        }
+    }
+
     public bool Water { get; set; } //Funcion muy guai para hacer getters y seters de manera muy simple
 
     public bool CanInput { get; set; }
@@ -283,7 +327,36 @@ public class Movment : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         FindObjectOfType<AudioManager>().PlaySound("land");
+
+
+            groundCollsion = true;
+            Debug.Log("ground collsison");
+
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+            groundCollsion = false;
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("hook"))
+        {
+            if (wantsToHook)
+            {
+                Hook(collision);
+                wantsToHook = false;
+            }
+
+            if (dj.isActiveAndEnabled)
+            {
+                lr.SetPosition(1, new Vector3(collision.transform.position.x, collision.transform.position.y, 0));
+                lr.SetPosition(0, new Vector3(rb.position.x, rb.position.y, 0));
+            }
+        }
+    }
 
 }
