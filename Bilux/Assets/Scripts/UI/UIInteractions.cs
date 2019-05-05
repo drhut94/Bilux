@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIInteractions : MonoBehaviour {
 
     public GameObject menu;
+    
 
     public void LoadTutorial()
     {
