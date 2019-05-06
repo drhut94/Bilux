@@ -33,6 +33,7 @@ public class hook_block : MonoBehaviour {
         isHooked = false;
         hook = false;
         boost = false;
+        col = null;
     }
 	
 
@@ -53,24 +54,25 @@ public class hook_block : MonoBehaviour {
         {
             boost = true;
         }
-
-
     }
 
     private void FixedUpdate()
     {
-        if (!player.active)
+        if (player != null)
         {
-            dj.enabled = false;
-            isHooked = false;
-            lr.enabled = false;
-            Debug.Log("Deshook!!!");
-            hook = false;
-            sr.color = Color.red;
-            player = null;
-            rbPlayer = null;
-            movment = null;
-            col = null;
+            if (!player.activeInHierarchy)
+            {
+                dj.enabled = false;
+                isHooked = false;
+                lr.enabled = false;
+                Debug.Log("Deshook!!!");
+                hook = false;
+                sr.color = Color.red;
+                player = null;
+                rbPlayer = null;
+                movment = null;
+                col = null;
+            }
         }
 
         if (col != null)
@@ -112,8 +114,6 @@ public class hook_block : MonoBehaviour {
                     boost = false;
                     rbPlayer.AddForce(rbPlayer.velocity * 2);
 
-
-
                     if (rbPlayer.velocity.magnitude > maxVelocity)
                     {
                         rbPlayer.velocity = rbPlayer.velocity.normalized * maxVelocity;
@@ -125,23 +125,29 @@ public class hook_block : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        sr.color = Color.green;
-        player = collision.gameObject;
-        rbPlayer = player.GetComponent<Rigidbody2D>();
-        movment = player.GetComponent<Movment>();
-        col = collision;
-        Debug.Log("entrado trigger");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            sr.color = Color.green;
+            player = collision.gameObject;
+            rbPlayer = player.GetComponent<Rigidbody2D>();
+            movment = player.GetComponent<Movment>();
+            col = collision;
+            Debug.Log("entrado trigger");
+        }
     }
 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        sr.color = Color.red;
-        player = null;
-        rbPlayer = null;
-        movment = null;
-        col = null;
-        Debug.Log("salido trigger");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            sr.color = Color.red;
+            player = null;
+            rbPlayer = null;
+            movment = null;
+            col = null;
+            Debug.Log("salido trigger");
+        }
     }
 
 

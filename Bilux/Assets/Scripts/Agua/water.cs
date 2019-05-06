@@ -20,6 +20,7 @@ public class water : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        movment = FindObjectOfType<Movment>();
         // fer bé
         //damageTimer = 0.5f;
         //timer = 0.5f;
