@@ -7,6 +7,21 @@ using UnityEngine.SceneManagement;
 public class UIInteractions : MonoBehaviour {
 
     public GameObject menu;
+    public Button[] levels;
+    public GameObject[] locks;
+
+
+    private void Start()
+    {
+        for (int i = 1; 1 < levels.Length; i++)
+        {
+            levels[i].enabled = false;
+            locks[i].gameObject.SetActive(true);
+
+            //levels[i].interactable = false;
+        }
+        FindObjectOfType<GameMngr>().UpdateLevels();
+    }
 
     public void LoadTutorial()
     {
@@ -65,6 +80,13 @@ public class UIInteractions : MonoBehaviour {
     {
         FindObjectOfType<AudioManager>().PlaySound("button");
         Application.Quit();
+    }
+
+    public void UnlockLevel(int level)
+    {
+        levels[level].enabled = true;
+        locks[level].gameObject.SetActive(false);
+        //levels[level].interactable = true;
     }
 
     //public void LoadEditor()
