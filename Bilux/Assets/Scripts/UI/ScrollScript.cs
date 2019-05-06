@@ -265,7 +265,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         // select new
         _pageSelectionImages[aPageIndex].sprite = selectedPage;
         _pageSelectionImages[aPageIndex].SetNativeSize();
-
+        
         _previousPageSelectionIndex = aPageIndex;
     }
 
