@@ -28,10 +28,14 @@ public class GameMngr : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        PlayerPrefs.SetFloat("tutorial", 100);
-        PlayerPrefs.SetFloat("level1", 0);
-        PlayerPrefs.SetFloat("level2", 0);
-        PlayerPrefs.SetFloat("level3", 0);
+
+        if (!PlayerPrefs.HasKey("tutorial"))
+        {
+            PlayerPrefs.SetFloat("tutorial", 0);
+            PlayerPrefs.SetFloat("level1", 0);
+            PlayerPrefs.SetFloat("level2", 0);
+            PlayerPrefs.SetFloat("level3", 0);
+        }
     }
 	
 	// Update is called once per frame
@@ -47,17 +51,19 @@ public class GameMngr : MonoBehaviour {
         level3 = PlayerPrefs.GetFloat("level3");
         level4 = PlayerPrefs.GetFloat("level4");
 
+        FindObjectOfType<UIInteractions>().UnlockLevel(0, "tutorial");
+
         if (tutorial >= 100)
         {
-            FindObjectOfType<UIInteractions>().UnlockLevel(1);
+            FindObjectOfType<UIInteractions>().UnlockLevel(1, "level1");
         }
         if (level1 >= 100)
         {
-            FindObjectOfType<UIInteractions>().UnlockLevel(2);
+            FindObjectOfType<UIInteractions>().UnlockLevel(2, "level2");
         }
         if (level2 >= 100)
         {
-            FindObjectOfType<UIInteractions>().UnlockLevel(3);
+            FindObjectOfType<UIInteractions>().UnlockLevel(3, "level3");
         }
 
     }

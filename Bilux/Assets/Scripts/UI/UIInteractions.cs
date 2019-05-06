@@ -9,6 +9,7 @@ public class UIInteractions : MonoBehaviour {
     public GameObject menu;
     public Button[] levels;
     public GameObject[] locks;
+    public Slider[] sliders;
 
 
     private void Start()
@@ -16,6 +17,7 @@ public class UIInteractions : MonoBehaviour {
         for (int i = 1; 1 < levels.Length; i++)
         {
             levels[i].enabled = false;
+            sliders[i].gameObject.SetActive(false);
             locks[i].gameObject.SetActive(true);
 
             //levels[i].interactable = false;
@@ -82,10 +84,13 @@ public class UIInteractions : MonoBehaviour {
         Application.Quit();
     }
 
-    public void UnlockLevel(int level)
+    public void UnlockLevel(int level, string levelName)
     {
+        sliders[level].value = PlayerPrefs.GetFloat(levelName);
         levels[level].enabled = true;
         locks[level].gameObject.SetActive(false);
+        sliders[level].gameObject.SetActive(true);
+
         //levels[level].interactable = true;
     }
 
