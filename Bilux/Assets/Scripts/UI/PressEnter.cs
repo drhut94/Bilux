@@ -8,6 +8,7 @@ public class PressEnter : MonoBehaviour {
     Button botton;
     public Button[] button;
     ScrollScript scroll;
+    UIInteractions inter;
 
     void Start()
     {
@@ -20,6 +21,8 @@ public class PressEnter : MonoBehaviour {
             }
             scroll = GetComponent<ScrollScript>();
         }
+
+        inter = GetComponent<UIInteractions>();
     }
 
     void Update()
@@ -32,7 +35,9 @@ public class PressEnter : MonoBehaviour {
             {
                 button[ScrollScript._currentPage].interactable = true;
             }
-            if (Input.GetKeyDown(KeyCode.Return) && ScrollScript.visible[ScrollScript._currentPage] == true)
+            if (Input.GetKeyDown(KeyCode.Return) && 
+                ScrollScript.visible[ScrollScript._currentPage] == true //&& 
+                /*inter.levels[ScrollScript._currentPage - 1].enabled == true*/)
             {
                 button[ScrollScript._currentPage].onClick.Invoke();
             }
