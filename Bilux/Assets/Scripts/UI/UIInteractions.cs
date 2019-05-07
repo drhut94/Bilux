@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class UIInteractions : MonoBehaviour {
 
     public GameObject menu;
+    public GameObject selector;
+    public GameObject settings;
     public Button[] levels;
     public GameObject[] locks;
     public Slider[] sliders;
@@ -50,31 +52,31 @@ public class UIInteractions : MonoBehaviour {
     }
 
 
-    public void Settings(GameObject settings)
+    public void Settings()
     {
         FindObjectOfType<AudioManager>().PlaySound("button");
         settings.SetActive(true);
         menu.SetActive(false);
     }
 
-    public void Selector(GameObject selector)
+    public void Selector()
     {
         FindObjectOfType<AudioManager>().PlaySound("button");
         selector.SetActive(true);
         menu.SetActive(false);
     }
 
-    public void SelectorBack(GameObject selector)
+    public void SelectorBack()
     {
         FindObjectOfType<AudioManager>().PlaySound("button");
         selector.SetActive(false);
         menu.SetActive(true);
     }
 
-    public void BackMenu(GameObject UI)
+    public void BackMenu()
     {
         FindObjectOfType<AudioManager>().PlaySound("button");
-        UI.SetActive(false);
+        settings.SetActive(false);
         menu.SetActive(true);
     }
 
@@ -94,6 +96,20 @@ public class UIInteractions : MonoBehaviour {
         //levels[level].interactable = true;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameObject.Find("Canvas_selector"))
+            {
+                SelectorBack();
+            }
+            else if(GameObject.Find("Canvas_settings"))
+            {
+                BackMenu();
+            }
+        }
+    }
     //public void LoadEditor()
     //{
     //    SceneManager.LoadScene("demo", LoadSceneMode.Single);
