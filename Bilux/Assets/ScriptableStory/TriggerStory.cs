@@ -23,10 +23,10 @@ public class TriggerStory : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            text.gameObject.SetActive(false);
-        }
+        //if (collision.gameObject.tag == "Player")
+        //{
+        //    text.gameObject.SetActive(false);
+        //}
     }
 
     IEnumerator TypeSentence (string sentence)
