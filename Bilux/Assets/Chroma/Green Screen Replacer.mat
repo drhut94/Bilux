@@ -74,7 +74,7 @@ Material:
     - _ShowBackground: 0
     - _ShowOriginal: 0
     - _Slope: 0
-    - _Smooth: 0.058
+    - _Smooth: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
