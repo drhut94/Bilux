@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
+    private DistanceJoint2D dj;
     public int health;
     int maxHealth;
     int recovery;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         movment = GetComponent<Movment>();
+        dj = GetComponent<DistanceJoint2D>();
         HideDamageIndicator();
         colorIndicator = damageIndicator.GetComponent<Image>();
         healthTimeBackup = healthTime;
@@ -96,6 +98,8 @@ public class Player : MonoBehaviour {
        
     }
 
+
+
     public int GetHealth
     {
         get { return health; }
@@ -143,6 +147,7 @@ public class Player : MonoBehaviour {
     {
         maxHealth = 100;
         health = maxHealth;
+        movment.Ishooked = false;
         recovery = 5;
         healthTime = 1f;
         damageDuration = 0.6f;

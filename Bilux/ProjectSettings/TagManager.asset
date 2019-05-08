@@ -8,6 +8,7 @@ TagManager:
   - BouncyBlock
   - DestructibleBlock
   - Final
+  - Ground
   layers:
   - Default
   - TransparentFX

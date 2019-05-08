@@ -12,11 +12,13 @@ public class Movment : MonoBehaviour {
     public bool boost;
     public float boostTime;
     public float boostCooldown;
+    public float maxHookVelocity;
 
 
     [HideInInspector]
     public Rigidbody2D rb;
 
+    public bool Ishooked;
     private float maxVelocityBackup;
     private float accelerationBackup;
     private float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
@@ -31,11 +33,14 @@ public class Movment : MonoBehaviour {
     private bool jump;
     private float boostTimeBackup;
     private TrailRenderer tr;
-    private bool groundCollsion;
+    public bool groundCollsion;
+    private Player player;
 
 
     void Start () {
 
+        Ishooked = false;
+        player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
         maxVelocityBackup = maxVelocity;
@@ -52,35 +57,34 @@ public class Movment : MonoBehaviour {
 
         moveHorizontal = Input.GetAxisRaw("Horizontal");
 
-        if (CanInput)
+
+        if (Input.GetButton("Boost"))
         {
-            if (Input.GetButton("Boost"))
-            {
-                boost = true;
+            boost = true;
 
-            }
-            else
-            {
-                boost = false;
-            }
-
-            if (Input.GetButtonDown("Boost"))
-            {
-                FindObjectOfType<AudioManager>().PlaySound("boost");
-                FindObjectOfType<AudioManager>().PlaySound("boostStart");
-            }
-
-            if (Input.GetButtonUp("Boost"))
-            {
-                FindObjectOfType<AudioManager>().PlaySound("boostEnd");
-                FindObjectOfType<AudioManager>().StopSound("boost", 0.0f);
-            }
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                jump = true;
-            }
         }
+        else
+        {
+            boost = false;
+        }
+
+        if (Input.GetButtonDown("Boost"))
+        {
+            FindObjectOfType<AudioManager>().PlaySound("boost");
+            FindObjectOfType<AudioManager>().PlaySound("boostStart");
+        }
+
+        if (Input.GetButtonUp("Boost"))
+        {
+            FindObjectOfType<AudioManager>().PlaySound("boostEnd");
+            FindObjectOfType<AudioManager>().StopSound("boost", 0.0f);
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+        }
+
     }
 
     private void FixedUpdate()
@@ -163,12 +167,15 @@ public class Movment : MonoBehaviour {
 
 
 
-        if (IsGorunded() && wantsToJump || IsOnRamp() && wantsToJump || Water && wantsToJump)
+        if (IsGorunded() && wantsToJump && groundCollsion || IsOnRamp() && wantsToJump && groundCollsion)
         {
-            FindObjectOfType<AudioManager>().PlaySound("jump");
-            speedV2.y = jumpForce;
-            JumpTimeCounter = 0;
-            isJumping = true;
+            if (!Ishooked)
+            {
+                FindObjectOfType<AudioManager>().PlaySound("jump");
+                speedV2.y = jumpForce;
+                JumpTimeCounter = 0;
+                isJumping = true;
+            }
         }
 
         if (Input.GetButton("Jump") && isJumping)
@@ -189,7 +196,6 @@ public class Movment : MonoBehaviour {
 
         if (boost)
         {
-            boost = false;
             maxVelocity = maxVelocityBackup * 1.7f;
             acceleration = accelerationBackup * 1.7f;
         }
@@ -198,29 +204,45 @@ public class Movment : MonoBehaviour {
             maxVelocity = maxVelocityBackup;
             acceleration = accelerationBackup;
         }
-        rb.velocity = speedV2;
+
+
+        if (Ishooked && boost)
+        {
+            rb.AddForce(speedV2 * 2);
+            Debug.Log(speedV2);
+
+            if (rb.velocity.magnitude > maxHookVelocity)
+            {
+                rb.velocity = rb.velocity.normalized * maxHookVelocity;
+            }
+        }
+        else
+        {
+            rb.velocity = speedV2;
+
+        }
         rb.angularVelocity = rotationSpeed;
     }
 
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    if(collision.gameObject.layer == groundLayer)
-    //    {
-    //        groundCollsion = true;
-    //    }
-    //    else
-    //    {
-    //        groundCollsion = false;
-    //    }
-    //}
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            groundCollsion = true;
+        }
+        else
+        {
+            groundCollsion = false;
+        }
+    }
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.layer == groundLayer)
-    //    {
-    //        groundCollsion = false;
-    //    }
-    //}
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            groundCollsion = false;
+        }
+    }
 
     //public bool CollidingWithGround()
     //{

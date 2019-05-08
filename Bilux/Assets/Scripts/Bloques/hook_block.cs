@@ -13,7 +13,7 @@ public class hook_block : MonoBehaviour {
     private bool isHooked;
     private GameObject player;
     private Rigidbody2D rbPlayer;
-    private Movment movment;
+    public Movment movment;
     private Collider2D col;
     private bool hook;
     private bool boost;
@@ -34,10 +34,20 @@ public class hook_block : MonoBehaviour {
         hook = false;
         boost = false;
         col = null;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 	
 
 	void Update () {
+
+        if (player != null)
+        {
+            if (!player.activeInHierarchy)
+            {
+                isHooked = false;
+                movment.Ishooked = isHooked;
+            }
+        }
 
         if (isHooked)
         {
@@ -94,6 +104,7 @@ public class hook_block : MonoBehaviour {
                     lr.enabled = true;
                     dj.enabled = true;
                     isHooked = true;
+
                     Debug.Log("hook!!!");
                 }
                 else if (isHooked)
@@ -107,19 +118,20 @@ public class hook_block : MonoBehaviour {
 
             }
 
-            if (isHooked)
-            {
-                if (boost && movment.boost) //Boost que obtiene al estar usando el gancho
-                {
-                    boost = false;
-                    rbPlayer.AddForce(rbPlayer.velocity * 2);
+            //if (isHooked)
+            //{
+            //    if (boost && movment.boost) //Boost que obtiene al estar usando el gancho
+            //    {
+            //        boost = false;
+            //        //rbPlayer.AddForce(rbPlayer.velocity * 2);
+            //        rbPlayer.velocity += new Vector2(rb.velocity.x * 2, rb.velocity.y * 2);
 
-                    if (rbPlayer.velocity.magnitude > maxVelocity)
-                    {
-                        rbPlayer.velocity = rbPlayer.velocity.normalized * maxVelocity;
-                    }
-                }
-            }
+            //        if (rbPlayer.velocity.magnitude > maxVelocity)
+            //        {
+            //            rbPlayer.velocity = rbPlayer.velocity.normalized * maxVelocity;
+            //        }
+            //    }
+            //}
         }
     }
 
@@ -150,5 +162,11 @@ public class hook_block : MonoBehaviour {
         }
     }
 
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            movment.Ishooked = isHooked;
+        }
+    }
 }
