@@ -10,7 +10,9 @@ public class colorChange : MonoBehaviour
 
     float timerBackup;
     Color color;
-    int hue;
+    float hue;
+        float timeLeft;
+        Color targetColor;
 
     private void Start()
     {
@@ -20,21 +22,29 @@ public class colorChange : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
 
-        if (timer < 0)
-        {
-            timer = timerBackup;
-            hue++;
-            Debug.Log(hue);
-            if (hue >= 360)
+
+            if (timeLeft <= Time.deltaTime)
             {
-                hue = 1;
-            }
+                // transition complete
+                // assign the target color
+                color = targetColor;
 
-            color = Color.HSVToRGB(hue, 60, 100);
-            RenderSettings.skybox.SetColor("_Tint", new Color(color.r, color.g, color.b));
-        }
+                // start a new transition
+                targetColor = new Color(Random.value, Random.value, Random.value);
+                timeLeft = 3.0f;
+            }
+            else
+            {
+                // transition in progress
+                // calculate interpolated color
+                color = Color.Lerp(color, targetColor, Time.deltaTime / timeLeft);
+
+                // update the timer
+                timeLeft -= Time.deltaTime;
+            }
+        
+        RenderSettings.skybox.SetColor("_Tint", color);
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * rotationSpeed);
     }
 }
