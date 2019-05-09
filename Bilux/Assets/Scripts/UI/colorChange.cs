@@ -3,40 +3,40 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class colorChange : MonoBehaviour {
+public class colorChange : MonoBehaviour
+{
+    public float timer;
+    public float rotationSpeed;
 
-
-    public Image image;
-    public float speed;
-    private float speedBackup;
-    private Color color;
-    private int r;
-    private int g;
-    private int b;
+    float timerBackup;
+    Color color;
+    int hue;
 
     private void Start()
     {
-        speed = speed / 100;
-        speedBackup = speed;
-        r = 0;
-        g = 0;
-        b = 0;
+        timerBackup = timer;
+        hue = 1;
     }
 
-    private void Update()
+    void Update()
     {
+        timer -= Time.deltaTime;
 
-        speed -= Time.deltaTime;
-
-        if (speed <= 0)
+        if (timer < 0)
         {
-            if (r < 255)
+            timer = timerBackup;
+            hue++;
+            Debug.Log(hue);
+            if (hue >= 360)
             {
-                r++;
+                hue = 1;
             }
+
+            color = Color.HSVToRGB(hue, 60, 100);
+            RenderSettings.skybox.SetColor("_Tint", new Color(color.r, color.g, color.b));
         }
-
-        image.color = color;
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * rotationSpeed);
     }
-
 }
+
+
