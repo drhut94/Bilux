@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
         //}
 
         trail();
-        Debug.Log(healthTime);
+        //Debug.Log(healthTime);
         if (movment.rb.velocity == recoveryVelocity && health < maxHealth)
         {
             healthTime -= Time.deltaTime;
