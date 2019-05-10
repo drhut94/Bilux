@@ -209,7 +209,7 @@ public class Movment : MonoBehaviour {
         if (Ishooked && boost)
         {
             rb.AddForce(speedV2 * 2);
-            Debug.Log(speedV2);
+            //Debug.Log(speedV2);
 
             if (rb.velocity.magnitude > maxHookVelocity)
             {
