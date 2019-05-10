@@ -11,8 +11,9 @@ public class colorChange : MonoBehaviour
     float timerBackup;
     Color color;
     float hue;
-        float timeLeft;
-        Color targetColor;
+    float timeLeft;
+    Color targetColor;
+    public ParticleSystem particles;
 
     private void Start()
     {
