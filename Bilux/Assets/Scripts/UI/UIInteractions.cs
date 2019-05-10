@@ -12,14 +12,19 @@ public class UIInteractions : MonoBehaviour {
     public Button[] levels;
     public GameObject[] locks;
     public Slider[] sliders;
+    public Slider[] slidersNC;
+    public Text[] percentage;
+    public Text[] percentageNC;
+
 
 
     private void Start()
     {
         for (int i = 1; 1 < levels.Length; i++)
         {
-            levels[i].enabled = false;
+            levels[i].enabled = true;
             sliders[i].gameObject.SetActive(false);
+            slidersNC[i].gameObject.SetActive(false);
             locks[i].gameObject.SetActive(true);
 
             //levels[i].interactable = false;
@@ -29,28 +34,59 @@ public class UIInteractions : MonoBehaviour {
 
     public void LoadTutorial()
     {
+        PlayerPrefs.SetInt("checkpoint", 1);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
+    public void LoadTutorialNC()
+    {
+        PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void LoadLevel1()
     {
+        PlayerPrefs.SetInt("checkpoint", 1);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+
+    public void LoadLevel1NC()
+    {
+        PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
         SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
 
     public void LoadLevel2()
     {
+        PlayerPrefs.SetInt("checkpoint", 1);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
+    }
+
+    public void LoadLevel2NC()
+    {
+        PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
         SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
 
     public void LoadLevel3()
     {
+        PlayerPrefs.SetInt("checkpoint", 1);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
         SceneManager.LoadScene(4, LoadSceneMode.Single);
     }
 
+    public void LoadLevel3NC()
+    {
+        PlayerPrefs.SetInt("checkpoint", 0);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(4, LoadSceneMode.Single);
+    }
 
     public void Settings()
     {
@@ -89,9 +125,13 @@ public class UIInteractions : MonoBehaviour {
     public void UnlockLevel(int level, string levelName)
     {
         sliders[level].value = PlayerPrefs.GetFloat(levelName);
+        slidersNC[level].value = PlayerPrefs.GetFloat(levelName + "NC");
         levels[level].enabled = true;
         locks[level].gameObject.SetActive(false);
         sliders[level].gameObject.SetActive(true);
+        slidersNC[level].gameObject.SetActive(true);
+        percentage[level].text = PlayerPrefs.GetFloat(levelName).ToString() + '%';
+        percentageNC[level].text = PlayerPrefs.GetFloat(levelName + "NC").ToString() + '%';
 
         //levels[level].interactable = true;
     }
