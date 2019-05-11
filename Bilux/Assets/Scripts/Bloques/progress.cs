@@ -16,7 +16,14 @@ public class progress : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerPrefs.SetFloat(levelName, progressLevel);
+            if (PlayerPrefs.GetInt("checkpoint") == 1)
+            {
+                PlayerPrefs.SetFloat(levelName, progressLevel);
+            }
+            else if (PlayerPrefs.GetInt("checkpoint") == 0)
+            {
+                PlayerPrefs.SetFloat(levelName + "NC", progressLevel);
+            }
         }
     }
 }

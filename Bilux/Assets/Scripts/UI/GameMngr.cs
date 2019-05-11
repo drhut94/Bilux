@@ -56,11 +56,6 @@ public class GameMngr : MonoBehaviour {
         level2 = PlayerPrefs.GetFloat("level2");
         level3 = PlayerPrefs.GetFloat("level3");
         level4 = PlayerPrefs.GetFloat("level4");
-        tutorial = PlayerPrefs.GetFloat("tutorialNC");
-        level1 = PlayerPrefs.GetFloat("level1NC");
-        level2 = PlayerPrefs.GetFloat("level2NC");
-        level3 = PlayerPrefs.GetFloat("level3NC");
-        level4 = PlayerPrefs.GetFloat("level4NC");
 
         FindObjectOfType<UIInteractions>().UnlockLevel(0, "tutorial");
 
