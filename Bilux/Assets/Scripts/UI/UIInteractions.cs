@@ -36,56 +36,56 @@ public class UIInteractions : MonoBehaviour {
     {
         PlayerPrefs.SetInt("checkpoint", 1);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
 
     public void LoadTutorialNC()
     {
         PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
 
     public void LoadLevel1()
     {
         PlayerPrefs.SetInt("checkpoint", 1);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(2, LoadSceneMode.Single);
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
 
     public void LoadLevel1NC()
     {
         PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(2, LoadSceneMode.Single);
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
 
     public void LoadLevel2()
     {
         PlayerPrefs.SetInt("checkpoint", 1);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(3, LoadSceneMode.Single);
+        SceneManager.LoadScene(4, LoadSceneMode.Single);
     }
 
     public void LoadLevel2NC()
     {
         PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(3, LoadSceneMode.Single);
+        SceneManager.LoadScene(4, LoadSceneMode.Single);
     }
 
     public void LoadLevel3()
     {
         PlayerPrefs.SetInt("checkpoint", 1);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(4, LoadSceneMode.Single);
+        SceneManager.LoadScene(5, LoadSceneMode.Single);
     }
 
     public void LoadLevel3NC()
     {
         PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(4, LoadSceneMode.Single);
+        SceneManager.LoadScene(5, LoadSceneMode.Single);
     }
 
     public void Settings()
