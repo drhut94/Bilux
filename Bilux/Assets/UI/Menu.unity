@@ -3746,8 +3746,8 @@ GameObject:
   m_Component:
   - component: {fileID: 590649255}
   - component: {fileID: 590649258}
-  - component: {fileID: 590649257}
   - component: {fileID: 590649256}
+  - component: {fileID: 590649257}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -3768,10 +3768,10 @@ RectTransform:
   m_Father: {fileID: 710996430}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.36425003, y: 0.05}
-  m_AnchorMax: {x: 0.6397292, y: 0.1493343}
-  m_AnchoredPosition: {x: -3.919983, y: -1}
-  m_SizeDelta: {x: 0, y: -8.097}
+  m_AnchorMin: {x: 0.36164585, y: 0.05}
+  m_AnchorMax: {x: 0.6397292, y: 0.2261476}
+  m_AnchoredPosition: {x: -1.4199829, y: 2.2999878}
+  m_SizeDelta: {x: -5, y: -1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &590649256
 MonoBehaviour:
@@ -3833,25 +3833,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 590649254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 123627f24e7ac7447b702268e00b2c2b, type: 3}
+    m_FontSize: 180
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 200
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: PLAY
 --- !u!222 &590649258
 CanvasRenderer:
   m_ObjectHideFlags: 0
