@@ -29,18 +29,18 @@ public class GameMngr : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        if (!PlayerPrefs.HasKey("tutorial"))
-        {
-            PlayerPrefs.SetFloat("tutorial", 0);
-            PlayerPrefs.SetFloat("level1", 0);
-            PlayerPrefs.SetFloat("level2", 0);
-            PlayerPrefs.SetFloat("level3", 0);
-            PlayerPrefs.SetFloat("tutorialNC", 0);
-            PlayerPrefs.SetFloat("level1NC", 0);
-            PlayerPrefs.SetFloat("level2NC", 0);
-            PlayerPrefs.SetFloat("level3NC", 0);
+        //if (!PlayerPrefs.HasKey("tutorial"))
+        //{
+            PlayerPrefs.SetFloat("tutorial", 100);
+            PlayerPrefs.SetFloat("level1", 100);
+            PlayerPrefs.SetFloat("level2", 100);
+            PlayerPrefs.SetFloat("level3", 100);
+            PlayerPrefs.SetFloat("tutorialNC", 100);
+            PlayerPrefs.SetFloat("level1NC", 100);
+            PlayerPrefs.SetFloat("level2NC", 100);
+            PlayerPrefs.SetFloat("level3NC", 100);
             PlayerPrefs.SetInt("checkpoint", 1);
-        }
+        //}
     }
 	
 	// Update is called once per frame
