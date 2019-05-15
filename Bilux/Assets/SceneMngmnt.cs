@@ -6,6 +6,7 @@ public class SceneMngmnt : MonoBehaviour {
 
 
     public Player player;
+    //public GameObject deathParticles;
 
 	void Start () {
 		
@@ -19,5 +20,14 @@ public class SceneMngmnt : MonoBehaviour {
             player.InitPlayer();
             player.gameObject.SetActive(true);
         }
+
+        //deathParticles.transform.position = player.transform.position;
+
+        //if (player.health <= 0)
+        //{
+        //    deathParticles.GetComponent<ParticleSystem>().Play();
+        //}
     }
+
+    
 }

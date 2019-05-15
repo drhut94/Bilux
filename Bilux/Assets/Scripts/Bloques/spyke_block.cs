@@ -18,6 +18,7 @@ public class spyke_block : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<Player>().Die();
             collision.gameObject.GetComponent<Player>().health -= 100;
         }
     }

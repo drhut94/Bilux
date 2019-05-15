@@ -23,6 +23,7 @@ public class Player : MonoBehaviour {
     public Vector2 initPlayerPos;
     public ParticleSystem normalTrail;
     public ParticleSystem[] fireTrail;
+    public GameObject deathParticles;
 
     void Start() {
         maxHealth = 100;
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour {
     void Update() {
         if (health <= 0)
         {
+            deathParticles.transform.position = transform.position;
             FindObjectOfType<AudioManager>().StopSound("music_level3", 0.0f);
             FindObjectOfType<AudioManager>().PlaySound("die");
             gameObject.SetActive(false);
@@ -98,7 +100,10 @@ public class Player : MonoBehaviour {
        
     }
 
-
+    public void Die()
+    {
+        deathParticles.GetComponent<ParticleSystem>().Play();
+    }
 
     public int GetHealth
     {

@@ -16,6 +16,7 @@ public class water : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.GetComponent<Player>().Die();
             collision.GetComponent<Player>().SetHealth(damage);
         }
     }
