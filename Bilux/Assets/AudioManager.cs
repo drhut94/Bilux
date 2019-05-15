@@ -1,6 +1,7 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour {
 
@@ -9,8 +10,27 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager instance;
     public string musicName;
 
-	// Use this for initialization
-	void Awake () {
+    public AudioMixer mixer;
+    public AudioMixerGroup audioMusic;
+    public AudioMixerGroup audioEffects;
+
+    public Slider musicSlider;
+    public Slider effectsSlider;
+
+    public void SetMusic(float sliderValue)
+    {
+        mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
+        PlayerPrefs.SetFloat("MusicVolume", sliderValue);
+    }
+
+    public void SetEffects(float sliderValue)
+    {
+        mixer.SetFloat("EffectsVol", Mathf.Log10(sliderValue) * 20);
+        PlayerPrefs.SetFloat("EffectsVolume", sliderValue); 
+    }
+
+    // Use this for initialization
+    void Awake () {
 
         //if (instance == null)
         //{
@@ -38,10 +58,30 @@ public class AudioManager : MonoBehaviour {
     public void Start()
     {
         FindObjectOfType<AudioManager>().PlayMusic(musicName, 0.0f);
+        mixer.SetFloat("MusicVol", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume")) * 20);
+        mixer.SetFloat("EffectsVol", Mathf.Log10(PlayerPrefs.GetFloat("EffectsVolume")) * 20);
+
+        if (PlayerPrefs.HasKey("MusicVolume") && musicSlider != null)
+            musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+
+        if (PlayerPrefs.HasKey("EffectsVolume") && effectsSlider != null)
+            effectsSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
+
 
         //StartCoroutine("StopSound", new object);
 
         //PlayMusic("music_level3", 10.0f);
+        sounds[0].source.outputAudioMixerGroup = audioMusic;
+        sounds[0].source.outputAudioMixerGroup = audioMusic;
+        sounds[12].source.outputAudioMixerGroup = audioMusic;
+        sounds[13].source.outputAudioMixerGroup = audioMusic;
+        sounds[15].source.outputAudioMixerGroup = audioMusic;
+        for (int i = 1; i < 12; i++)
+        {
+            sounds[i].source.outputAudioMixerGroup = audioEffects;
+        }
+        sounds[14].source.outputAudioMixerGroup = audioEffects;
+        sounds[16].source.outputAudioMixerGroup = audioEffects;
     }
 
     public void PlaySound (string name)

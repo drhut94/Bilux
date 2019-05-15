@@ -76,12 +76,58 @@ public class UIInteractions : MonoBehaviour {
 
     public void LoadLevel3()
     {
+        //En teoria level 5 en UI
         PlayerPrefs.SetInt("checkpoint", 1);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
         SceneManager.LoadScene(5, LoadSceneMode.Single);
     }
 
     public void LoadLevel3NC()
+    {
+        //En teoria level 5 en UI
+        PlayerPrefs.SetInt("checkpoint", 0);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(5, LoadSceneMode.Single);
+    }
+
+    public void LoadLevel4()
+    {
+        //En teoria level 3 en UI
+        PlayerPrefs.SetInt("checkpoint", 1);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(6, LoadSceneMode.Single);
+    }
+
+    public void LoadLevel4NC()
+    {
+        //En teoria level 3 en UI
+        PlayerPrefs.SetInt("checkpoint", 0);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(6, LoadSceneMode.Single);
+    }
+    public void LoadLevel5()
+    {
+        //En teoria level 4 en UI
+        PlayerPrefs.SetInt("checkpoint", 1);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(5, LoadSceneMode.Single);
+    }
+
+    public void LoadLevel5NC()
+    {
+        //En teoria level 4 en UI
+        PlayerPrefs.SetInt("checkpoint", 0);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(5, LoadSceneMode.Single);
+    }
+    public void LoadLevelBonus()
+    {
+        PlayerPrefs.SetInt("checkpoint", 1);
+        FindObjectOfType<AudioManager>().PlaySound("loadlevel");
+        SceneManager.LoadScene(5, LoadSceneMode.Single);
+    }
+
+    public void LoadLevelBonusNC()
     {
         PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
