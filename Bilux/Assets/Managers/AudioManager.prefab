@@ -143,3 +143,10 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   musicName: music_level3
+  mixer: {fileID: 24100000, guid: e4d813bfb3e1b794eb60a6918155d72f, type: 2}
+  audioMusic: {fileID: 243388709806403326, guid: e4d813bfb3e1b794eb60a6918155d72f,
+    type: 2}
+  audioEffects: {fileID: 243875549572806066, guid: e4d813bfb3e1b794eb60a6918155d72f,
+    type: 2}
+  musicSlider: {fileID: 0}
+  effectsSlider: {fileID: 0}

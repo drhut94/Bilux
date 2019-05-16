@@ -2386,7 +2386,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COMPLETE LEVEL4 IN NORMAL MODE  TO UNLOCK
+  m_Text: IN PROGRESS
 --- !u!222 &227960140
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6516,7 +6516,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COMPLETE LEVEL3 IN NORMAL MODE  TO UNLOCK
+  m_Text: IN PROGRESS
 --- !u!222 &762595664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8100,7 +8100,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 258914048}
-        m_MethodName: LoadLevel4
+        m_MethodName: LoadLevel3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15145,7 +15145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COMPLETE ALL LEVELES IN NO CHECKPOINT MODE TO UNLOCK
+  m_Text: IN PROGRESS
 --- !u!222 &1337018416
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20827,7 +20827,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 258914048}
-        m_MethodName: LoadLevel4NC
+        m_MethodName: LoadLevel3NC
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
