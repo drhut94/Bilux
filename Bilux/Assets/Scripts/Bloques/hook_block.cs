@@ -18,10 +18,15 @@ public class hook_block : MonoBehaviour {
     private bool hook;
     private bool boost;
 
+    private Light light;
+    public float fadeDuration;
+
+
 
 
     void Start () {
 
+        light = GetComponentInChildren<Light>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         lr = GetComponent<LineRenderer>();
@@ -133,6 +138,11 @@ public class hook_block : MonoBehaviour {
             //    }
             //}
         }
+    }
+
+    private void FadeLight()
+    {
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
