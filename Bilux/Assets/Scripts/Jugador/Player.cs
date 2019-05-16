@@ -24,9 +24,10 @@ public class Player : MonoBehaviour {
     public ParticleSystem normalTrail;
     public ParticleSystem[] fireTrail;
     public GameObject deathParticles;
-    public Transform deadPlayer;
+    //public GameObject deadPlayer;
 
     void Start() {
+        //deadPlayer.SetActive(false);
         maxHealth = 100;
         health = maxHealth;
         recovery = 5;
@@ -53,11 +54,14 @@ public class Player : MonoBehaviour {
     void Update() {
         if (health <= 0)
         {
-            Instantiate(deadPlayer, new Vector2(transform.position.x - 0.2f, transform.position.y -1), Quaternion.Euler(0, 0, 0));
+            //GameObject obj = Instantiate(deadPlayer, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.Euler(0, 0, 0));
+            //obj.getcomponentinchildren<rigidbody2d>().velocity = movment.speedv2;
+            //deadPlayer.SetActive(true);
+
             deathParticles.transform.position = transform.position;
             FindObjectOfType<AudioManager>().StopSound("music_level3", 0.0f);
             FindObjectOfType<AudioManager>().PlaySound("die");
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); 
         }
 
         //if (Input.GetButtonDown("Reload"))

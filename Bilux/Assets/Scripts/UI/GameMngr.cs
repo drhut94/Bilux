@@ -31,15 +31,7 @@ public class GameMngr : MonoBehaviour {
 
         if (!PlayerPrefs.HasKey("tutorial"))
         {
-            PlayerPrefs.SetFloat("tutorial", 0.0f);
-            PlayerPrefs.SetFloat("level1", 0.0f);
-            PlayerPrefs.SetFloat("level2", 0.0f);
-            PlayerPrefs.SetFloat("level3", 0.0f);
-            PlayerPrefs.SetFloat("tutorialNC", 0.0f);
-            PlayerPrefs.SetFloat("level1NC", 0.0f);
-            PlayerPrefs.SetFloat("level2NC", 0.0f);
-            PlayerPrefs.SetFloat("level3NC", 0.0f);
-            PlayerPrefs.SetInt("checkpoint", 1);
+            ResetGameProgres();
         }
     }
 	
@@ -76,5 +68,18 @@ public class GameMngr : MonoBehaviour {
 
     }
 
+    public void ResetGameProgres()
+    {
+        PlayerPrefs.SetFloat("tutorial", 0.0f);
+        PlayerPrefs.SetFloat("level1", 0.0f);
+        PlayerPrefs.SetFloat("level2", 0.0f);
+        PlayerPrefs.SetFloat("level3", 0.0f);
+        PlayerPrefs.SetFloat("tutorialNC", 0.0f);
+        PlayerPrefs.SetFloat("level1NC", 0.0f);
+        PlayerPrefs.SetFloat("level2NC", 0.0f);
+        PlayerPrefs.SetFloat("level3NC", 0.0f);
+        PlayerPrefs.SetInt("checkpoint", 1);
+        UpdateLevels();
+    }
 
 }

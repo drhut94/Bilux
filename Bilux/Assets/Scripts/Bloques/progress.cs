@@ -18,17 +18,11 @@ public class progress : MonoBehaviour {
         {
             if (PlayerPrefs.GetInt("checkpoint") == 1)
             {
-                if (PlayerPrefs.GetFloat(levelName) < 100)
-                {
                     PlayerPrefs.SetFloat(levelName, progressLevel);
-                }
             }
             else if (PlayerPrefs.GetInt("checkpoint") == 0)
             {
-                if (PlayerPrefs.GetFloat(levelName) < 100)
-                {
                     PlayerPrefs.SetFloat(levelName + "NC", progressLevel);
-                }
             }
         }
     }

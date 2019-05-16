@@ -23,7 +23,7 @@ public class Movment : MonoBehaviour {
     private float accelerationBackup;
     private float moveHorizontal; //sirve para almacenar la posicon horizontal de un joystick o teclado (0 - 1)
     private float rotationSpeed;
-    private Vector2 speedV2;
+    public Vector2 speedV2;
     private Vector2 position; 
     private float JumpTimeCounter;
     private bool isJumping;

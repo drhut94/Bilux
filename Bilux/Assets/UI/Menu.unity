@@ -2386,7 +2386,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COMPLETE LEVEL4 IN NORMAL MODE  TO UNLOCK
+  m_Text: WORK IN PROGRESS
 --- !u!222 &227960140
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6516,7 +6516,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COMPLETE LEVEL3 IN NORMAL MODE  TO UNLOCK
+  m_Text: WORK IN PROGRESS
 --- !u!222 &762595664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15145,7 +15145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COMPLETE ALL LEVELES IN NO CHECKPOINT MODE TO UNLOCK
+  m_Text: WORK IN PROGRESS
 --- !u!222 &1337018416
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17040,6 +17040,49 @@ Prefab:
     - target: {fileID: 1795218456804386, guid: c918fba12f6d03a42b07b40601fc5796, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224199629386233080, guid: c918fba12f6d03a42b07b40601fc5796,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224780653383081576, guid: c918fba12f6d03a42b07b40601fc5796,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4905206331999782, guid: c918fba12f6d03a42b07b40601fc5796, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224290836926484168, guid: c918fba12f6d03a42b07b40601fc5796,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224962181090946656, guid: c918fba12f6d03a42b07b40601fc5796,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224780653383081576, guid: c918fba12f6d03a42b07b40601fc5796,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -83
+      objectReference: {fileID: 0}
+    - target: {fileID: 224780653383081576, guid: c918fba12f6d03a42b07b40601fc5796,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306218503383356, guid: c918fba12f6d03a42b07b40601fc5796, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114550066732222292, guid: c918fba12f6d03a42b07b40601fc5796,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetGameProgres
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c918fba12f6d03a42b07b40601fc5796, type: 2}
