@@ -292,6 +292,12 @@ public class Movment : MonoBehaviour {
 
     public bool CanInput { get; set; }
 
+    public Vector2 Speed
+    {
+        get { return speedV2; }
+        set { speedV2 = value; }
+    }
+
     public float GetMoveHorizontal ()
     {
         return moveHorizontal;

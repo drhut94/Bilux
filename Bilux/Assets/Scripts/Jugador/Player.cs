@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
     public ParticleSystem normalTrail;
     public ParticleSystem[] fireTrail;
     public GameObject deathParticles;
-    //public GameObject deadPlayer;
+    public GameObject deadPlayer;
 
     void Start() {
         //deadPlayer.SetActive(false);
@@ -54,9 +54,8 @@ public class Player : MonoBehaviour {
     void Update() {
         if (health <= 0)
         {
-            //GameObject obj = Instantiate(deadPlayer, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.Euler(0, 0, 0));
-            //obj.getcomponentinchildren<rigidbody2d>().velocity = movment.speedv2;
-            //deadPlayer.SetActive(true);
+
+            DestroyPlayer();
 
             deathParticles.transform.position = transform.position;
             FindObjectOfType<AudioManager>().StopSound("music_level3", 0.0f);
@@ -194,5 +193,20 @@ public class Player : MonoBehaviour {
         {
             FindObjectOfType<AudioManager>().PlaySound("bounce");
         }
+    }
+
+    private void DestroyPlayer()
+    {
+        GameObject obj = Instantiate(deadPlayer, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 0));
+        Rigidbody2D[] rb2d = obj.GetComponentsInChildren<Rigidbody2D>();
+
+        for(int i = 0; i < rb2d.Length; i++)
+        {
+            float rand = Random.Range(2.0f, -2.0f);
+            rb2d[i].bodyType = RigidbodyType2D.Dynamic;
+            rb2d[i].velocity = movment.Speed * new Vector2(rand , rand);
+            rb2d[i].angularVelocity = rand * 100;
+        }
+
     }
 }
