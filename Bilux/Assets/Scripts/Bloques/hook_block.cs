@@ -18,7 +18,8 @@ public class hook_block : MonoBehaviour {
     private bool hook;
     private bool boost;
 
-    private Light light;
+    private Light lt;
+    private float intensityBackup;
     public float fadeDuration;
 
 
@@ -26,7 +27,8 @@ public class hook_block : MonoBehaviour {
 
     void Start () {
 
-        light = GetComponentInChildren<Light>();
+        lt = GetComponentInChildren<Light>();
+        intensityBackup = lt.intensity;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         lr = GetComponent<LineRenderer>();
@@ -44,6 +46,8 @@ public class hook_block : MonoBehaviour {
 	
 
 	void Update () {
+
+        FadeLight();
 
         if (player != null)
         {
@@ -143,6 +147,14 @@ public class hook_block : MonoBehaviour {
     private void FadeLight()
     {
 
+        if(lt.intensity >= intensityBackup)
+        {
+            lt.intensity -= lt.intensity * Time.deltaTime * fadeDuration;
+        }
+        else if(lt.intensity <= 0)
+        {
+            lt.intensity += lt.intensity * Time.deltaTime * fadeDuration;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
