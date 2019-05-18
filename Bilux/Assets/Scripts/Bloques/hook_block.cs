@@ -18,7 +18,7 @@ public class hook_block : MonoBehaviour {
     private bool hook;
     private bool boost;
 
-    private Light lt;
+    public Light lt;
     private float intensityBackup;
     public float fadeDuration;
 
@@ -27,7 +27,6 @@ public class hook_block : MonoBehaviour {
 
     void Start () {
 
-        lt = GetComponentInChildren<Light>();
         intensityBackup = lt.intensity;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();

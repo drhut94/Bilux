@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 public class destructible_block : MonoBehaviour {
 
@@ -14,13 +15,15 @@ public class destructible_block : MonoBehaviour {
     public AudioClip destructSound;
 
 
-	void Start () {
+    void Start () {
+
         bc = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         aSource = GetComponent<AudioSource>();
         destroy = false;
         v3 = new Vector3(0, 0, 0);
-	}
+
+    }
 	
 	
 	void Update () {
@@ -53,6 +56,8 @@ public class destructible_block : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("breackkkkkkk");
+            FindObjectOfType<NearDeath>().PlayAberration();
             FindObjectOfType<AudioManager>().PlaySound("explosion");
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.AddForce(collision.GetComponent<Rigidbody2D>().velocity * 30);

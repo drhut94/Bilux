@@ -19,6 +19,7 @@ public class SceneMngmnt : MonoBehaviour {
             player.transform.position = player.initPlayerPos;
             player.InitPlayer();
             player.gameObject.SetActive(true);
+            FindObjectOfType<NearDeath>().ResetEffects();
         }
 
         //deathParticles.transform.position = player.transform.position;

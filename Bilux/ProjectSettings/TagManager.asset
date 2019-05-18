@@ -9,6 +9,8 @@ TagManager:
   - DestructibleBlock
   - Final
   - Ground
+  - PostProcessing
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - 
   - Ground
   - Player
-  - 
+  - PostProcessing
   - 
   - 
   - 
