@@ -313,5 +313,27 @@ public class Movment : MonoBehaviour {
         FindObjectOfType<AudioManager>().PlaySound("land");
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("NoGravity"))
+        {
+        Debug.Log("no gravity");
+            rb.gravityScale = 0.3f;
+        }
+        else
+        {
+            rb.gravityScale = 1;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("NoGravity"))
+        {
+            rb.gravityScale = 1;
+        }
+    }
+
 
 }
