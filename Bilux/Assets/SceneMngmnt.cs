@@ -14,9 +14,8 @@ public class SceneMngmnt : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload") && !player.isActiveAndEnabled)
         {
-            player.transform.position = player.initPlayerPos;
             player.InitPlayer();
             player.gameObject.SetActive(true);
             FindObjectOfType<NearDeath>().ResetEffects();

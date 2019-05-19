@@ -38,11 +38,11 @@ public class Player : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         movment = GetComponent<Movment>();
         dj = GetComponent<DistanceJoint2D>();
-        HideDamageIndicator();
-        colorIndicator = damageIndicator.GetComponent<Image>();
+        //colorIndicator = damageIndicator.GetComponent<Image>();
         healthTimeBackup = healthTime;
         recoveryVelocity = new Vector2(0f, 0f);
-        initPlayerPos = gameObject.transform.position;
+        initPlayerPos = transform.position;
+        Debug.Log("uaaaaaaaaaaaaaaaaaaaaaaau");
 
         for (int i = 0; i < fireTrail.Length; i++)
         {
@@ -118,15 +118,19 @@ public class Player : MonoBehaviour {
 
     public void trail()
     {
-        if (Input.GetButtonDown("Boost"))
+
+        if (Input.GetButton("Boost"))
         {
-            for(int i = 0; i < fireTrail.Length; i++)
-            {
-                fireTrail[i].Play();
-            }
             normalTrail.Stop();
+            if (!fireTrail[1].isEmitting)
+            {
+                for(int i = 0; i < fireTrail.Length; i++)
+                {
+                    fireTrail[i].Play();
+                }
+            }
         }
-        if (Input.GetButtonUp("Boost"))
+        else
         {
             for (int i = 0; i < fireTrail.Length; i++)
             {
@@ -141,10 +145,7 @@ public class Player : MonoBehaviour {
         damageIndicator.SetActive(true);
     }
 
-    void HideDamageIndicator()
-    {
-        damageIndicator.SetActive(false);
-    }
+
 
     void RecoverHealth(int recover)
     {
@@ -156,6 +157,11 @@ public class Player : MonoBehaviour {
 
     public void InitPlayer()
     {
+        for (int i = 0; i < fireTrail.Length; i++)
+        {
+            fireTrail[i].Stop();
+        }
+        normalTrail.Stop();
         maxHealth = 100;
         health = maxHealth;
         movment.Ishooked = false;
@@ -164,13 +170,10 @@ public class Player : MonoBehaviour {
         damageDuration = 0.6f;
         recoveryDuration = 1.1f;
         rb.velocity = new Vector2(0.0f, 0.0f);
+        transform.position = initPlayerPos;
 
         FindObjectOfType<AudioManager>().PlayMusic(FindObjectOfType<AudioManager>().musicName, 1.0f);
 
-        for (int i = 0; i < fireTrail.Length; i++)
-        {
-            fireTrail[i].Stop();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
