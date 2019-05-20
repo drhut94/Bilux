@@ -11,7 +11,9 @@ using System.Collections.Generic;
 public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public static bool[] visible = new bool[14];
-        
+    float dpad;
+    float moveHor;
+    bool used;
 
     [Tooltip("Set starting page index - starting from 0")]
     public int startingPage = 0;
@@ -66,6 +68,7 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     //------------------------------------------------------------------------
     void Start()
     {
+        used = false;
         for (int i = 0; i < visible.Length; i++)
         {
             visible[i] = false;
@@ -111,14 +114,25 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     //------------------------------------------------------------------------
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButtonDown("ControllerPadRight"))
+        Debug.Log(used);
+        Debug.Log(dpad);
+
+        dpad = Input.GetAxisRaw("ControllerPadX");
+        moveHor = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || (dpad > 0 && used == false) || (moveHor > 0 && used == false))
         {
             NextScreen();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButtonDown("ControllerPadLeft"))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || (dpad < 0 && used == false) || (moveHor < 0 && used == false))
         {
             PreviousScreen();
         }
+
+        if (dpad != 0 || moveHor != 0)
+            used = true;
+        else
+            used = false;
         // if moving to target position
         if (_lerp)
         {
