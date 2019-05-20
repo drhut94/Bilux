@@ -65,6 +65,8 @@ public class GameMngr : MonoBehaviour {
         {
             FindObjectOfType<UIInteractions>().UnlockLevel(3, "level3");
         }
+        FindObjectOfType<UIInteractions>().UnlockLevel(6, "bonusLevel");
+        FindObjectOfType<UIInteractions>().UnlockLevel(4, "bonusLevel");
 
     }
 
