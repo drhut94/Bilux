@@ -111,11 +111,11 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     //------------------------------------------------------------------------
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButtonDown("ControllerPadRight"))
         {
             NextScreen();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButtonDown("ControllerPadLeft"))
         {
             PreviousScreen();
         }

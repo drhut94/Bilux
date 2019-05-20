@@ -20,7 +20,7 @@ public class DeathMenu : MonoBehaviour {
 	void Update () {
         if (GameObject.FindGameObjectWithTag("Player") == null && muerto==false)
         {   
-            Invoke("PopDeathMenu", 1.5f);
+            Invoke("PopDeathMenu", 1f);
             Debug.Log("Dead");
             muerto = true;
         }
