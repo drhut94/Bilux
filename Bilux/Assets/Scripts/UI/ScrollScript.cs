@@ -118,16 +118,18 @@ public class ScrollScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         Debug.Log(dpad);
 
         dpad = Input.GetAxisRaw("ControllerPadX");
-        if (Input.GetKeyDown(KeyCode.RightArrow) || (dpad > 0 && used == false))
+        moveHor = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || (dpad > 0 && used == false) || (moveHor > 0 && used == false))
         {
             NextScreen();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || (dpad < 0 && used == false))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || (dpad < 0 && used == false) || (moveHor < 0 && used == false))
         {
             PreviousScreen();
         }
 
-        if (dpad != 0)
+        if (dpad != 0 || moveHor != 0)
             used = true;
         else
             used = false;
