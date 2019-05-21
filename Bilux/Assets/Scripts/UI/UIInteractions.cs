@@ -110,7 +110,7 @@ public class UIInteractions : MonoBehaviour {
         //En teoria level 4 en UI
         PlayerPrefs.SetInt("checkpoint", 1);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(6, LoadSceneMode.Single);
+        SceneManager.LoadScene(8, LoadSceneMode.Single);
     }
 
     public void LoadLevel5NC()
@@ -118,7 +118,7 @@ public class UIInteractions : MonoBehaviour {
         //En teoria level 4 en UI
         PlayerPrefs.SetInt("checkpoint", 0);
         FindObjectOfType<AudioManager>().PlaySound("loadlevel");
-        SceneManager.LoadScene(6, LoadSceneMode.Single);
+        SceneManager.LoadScene(8, LoadSceneMode.Single);
     }
     public void LoadLevelBonus()
     {

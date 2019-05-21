@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4178297145484856}
   - component: {fileID: 212088768329699064}
   - component: {fileID: 60252553609467718}
-  - component: {fileID: 50219525847054552}
   - component: {fileID: 114078945970360934}
   m_Layer: 0
   m_Name: spike_block (1)
@@ -112,7 +111,6 @@ GameObject:
   - component: {fileID: 4232262988705234}
   - component: {fileID: 212524574955557928}
   - component: {fileID: 60857613530535574}
-  - component: {fileID: 50104578659164812}
   - component: {fileID: 114331618365250508}
   m_Layer: 0
   m_Name: spike_block (4)
@@ -149,7 +147,6 @@ GameObject:
   - component: {fileID: 4895323672970764}
   - component: {fileID: 212588831165239100}
   - component: {fileID: 60006531073213236}
-  - component: {fileID: 50706892513108980}
   - component: {fileID: 114559869925566844}
   m_Layer: 0
   m_Name: spike_block (7)
@@ -168,7 +165,6 @@ GameObject:
   - component: {fileID: 4045627090834452}
   - component: {fileID: 212118530599705558}
   - component: {fileID: 60619259032988252}
-  - component: {fileID: 50298421518482960}
   - component: {fileID: 114253032477779194}
   m_Layer: 0
   m_Name: spike_block (6)
@@ -203,6 +199,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4150958387177412}
+  - component: {fileID: 50435496623200890}
   m_Layer: 0
   m_Name: Circle1_spykes
   m_TagString: Untagged
@@ -220,7 +217,6 @@ GameObject:
   - component: {fileID: 4115437110279956}
   - component: {fileID: 212664141938865714}
   - component: {fileID: 60640966549537930}
-  - component: {fileID: 50031575918905168}
   - component: {fileID: 114916879657230236}
   m_Layer: 0
   m_Name: spike_block (5)
@@ -257,7 +253,6 @@ GameObject:
   - component: {fileID: 4836531617662268}
   - component: {fileID: 212655338706431674}
   - component: {fileID: 60497776179155438}
-  - component: {fileID: 50484584485352180}
   - component: {fileID: 114769890260440372}
   m_Layer: 0
   m_Name: spike_block (2)
@@ -276,7 +271,6 @@ GameObject:
   - component: {fileID: 4286808687793426}
   - component: {fileID: 212221155821271606}
   - component: {fileID: 60190860040929042}
-  - component: {fileID: 50190653998864362}
   - component: {fileID: 114215176193594860}
   m_Layer: 0
   m_Name: spike_block (3)
@@ -295,7 +289,6 @@ GameObject:
   - component: {fileID: 4454181054713172}
   - component: {fileID: 212959610168948522}
   - component: {fileID: 60627100564235818}
-  - component: {fileID: 50798994700352514}
   - component: {fileID: 114897465548397942}
   m_Layer: 0
   m_Name: spike_block
@@ -355,7 +348,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664188426192142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.572994, y: -28.203554, z: 0.06920209}
+  m_LocalPosition: {x: -16.57, y: -28.2, z: 0.06920209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4454181054713172}
@@ -559,153 +552,13 @@ Transform:
   m_Father: {fileID: 4150958387177412}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
---- !u!50 &50031575918905168
+--- !u!50 &50435496623200890
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1680182557150532}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50104578659164812
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378872139709744}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50190653998864362
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1912024785361656}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50219525847054552
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102280095663216}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50298421518482960
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522354948462830}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50484584485352180
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1908084894700922}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50706892513108980
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1483718092034428}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50798994700352514
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1924182530444292}
+  m_GameObject: {fileID: 1664188426192142}
   m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -1523,7 +1376,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e219b3dae9d48b4458fd3660d5d8e35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1613,7 +1466,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e219b3dae9d48b4458fd3660d5d8e35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1703,7 +1556,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e219b3dae9d48b4458fd3660d5d8e35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1748,7 +1601,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e219b3dae9d48b4458fd3660d5d8e35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1838,7 +1691,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e219b3dae9d48b4458fd3660d5d8e35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2018,7 +1871,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e219b3dae9d48b4458fd3660d5d8e35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2063,7 +1916,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e219b3dae9d48b4458fd3660d5d8e35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2108,7 +1961,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e219b3dae9d48b4458fd3660d5d8e35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
