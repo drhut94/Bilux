@@ -300,7 +300,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1758244269429576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2072296, y: -1.35, z: 0}
+  m_LocalPosition: {x: 76.2, y: 14.63, z: -0.11876417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4540649123852738}
@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructVelocity: 3
   destructSound: {fileID: 8300000, guid: 65393d5e4b899034c9dca36af7107f36, type: 3}
-  PPcolor: {fileID: 11400000, guid: 152a4b8dc7d65b94eb1dff131dc507b0, type: 2}
+  nearDeath: {fileID: 0}
 --- !u!212 &212064914317859400
 SpriteRenderer:
   m_ObjectHideFlags: 1
