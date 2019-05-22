@@ -13,6 +13,7 @@ public class destructible_block : MonoBehaviour {
     public float destructVelocity;
     private AudioSource aSource;
     public AudioClip destructSound;
+    public NearDeath nearDeath;
 
 
     void Start () {
@@ -54,10 +55,10 @@ public class destructible_block : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("breackkkkkkk");
-            FindObjectOfType<NearDeath>().PlayAberration();
+            nearDeath.PlayAberration();
             FindObjectOfType<AudioManager>().PlaySound("explosion");
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.AddForce(collision.GetComponent<Rigidbody2D>().velocity * 30);
