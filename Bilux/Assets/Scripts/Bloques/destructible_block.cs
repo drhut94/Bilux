@@ -58,7 +58,7 @@ public class destructible_block : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("breackkkkkkk");
-            nearDeath.PlayAberration();
+            //nearDeath.PlayAberration();
             FindObjectOfType<AudioManager>().PlaySound("explosion");
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.AddForce(collision.GetComponent<Rigidbody2D>().velocity * 30);
