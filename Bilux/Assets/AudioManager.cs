@@ -76,6 +76,10 @@ public class AudioManager : MonoBehaviour {
         sounds[12].source.outputAudioMixerGroup = audioMusic;
         sounds[13].source.outputAudioMixerGroup = audioMusic;
         sounds[15].source.outputAudioMixerGroup = audioMusic;
+        sounds[17].source.outputAudioMixerGroup = audioMusic;
+        sounds[18].source.outputAudioMixerGroup = audioMusic;
+        sounds[19].source.outputAudioMixerGroup = audioMusic;
+        sounds[20].source.outputAudioMixerGroup = audioMusic;
         for (int i = 1; i < 12; i++)
         {
             sounds[i].source.outputAudioMixerGroup = audioEffects;
