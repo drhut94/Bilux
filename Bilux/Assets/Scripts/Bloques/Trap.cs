@@ -5,12 +5,16 @@ using UnityEngine;
 public class Trap : MonoBehaviour {
 
     public GameObject[] go;
+    public TrapGo trap;
 
-
+    private void Update()
+    {
+        Debug.Log(trap.trap);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || trap.trap == true)
         {
             for (int i = 0; i < go.Length; i++)
             {
