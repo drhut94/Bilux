@@ -154,6 +154,30 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: music_level7
+    clip: {fileID: 8300000, guid: 1382ff8041348934fa3dfc26a06b3dc3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: music_level4
+    clip: {fileID: 8300000, guid: f093528a34444ae498320b861d484793, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: music_tutorial
+    clip: {fileID: 8300000, guid: 83d77a79f769ab34a9c011343e08fb18, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: music_bonus
+    clip: {fileID: 8300000, guid: 0107dbf9cf39c394a86e3769e3f1ae4f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   musicName: music_menu
   mixer: {fileID: 24100000, guid: e4d813bfb3e1b794eb60a6918155d72f, type: 2}
   audioMusic: {fileID: 243388709806403326, guid: e4d813bfb3e1b794eb60a6918155d72f,
@@ -161,4 +185,4 @@ MonoBehaviour:
   audioEffects: {fileID: 243875549572806066, guid: e4d813bfb3e1b794eb60a6918155d72f,
     type: 2}
   musicSlider: {fileID: 0}
-  effectSlider: {fileID: 0}
+  effectsSlider: {fileID: 0}
