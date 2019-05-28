@@ -37,7 +37,6 @@ public class NearDeath : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            Debug.Log("trap");
 
         vigneteSettings = PPcolor.vignette.settings;
         //vigneteSettings.intensity = 0.05f;

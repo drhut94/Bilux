@@ -9,17 +9,14 @@ public class Trap : MonoBehaviour {
 
     private void Update()
     {
+    if (/*collision.gameObject.CompareTag("Player") ||*/ trap.trap == true)
+    {
+        for (int i = 0; i < go.Length; i++)
+        {
+            go[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        }
+    }
         Debug.Log(trap.trap);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") || trap.trap == true)
-        {
-            for (int i = 0; i < go.Length; i++)
-            {
-                go[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            }
-        }
-    }
 }

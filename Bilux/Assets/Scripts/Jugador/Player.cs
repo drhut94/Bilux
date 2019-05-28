@@ -42,7 +42,6 @@ public class Player : MonoBehaviour {
         healthTimeBackup = healthTime;
         recoveryVelocity = new Vector2(0f, 0f);
         initPlayerPos = transform.position;
-        Debug.Log("uaaaaaaaaaaaaaaaaaaaaaaau");
 
         for (int i = 0; i < fireTrail.Length; i++)
         {
