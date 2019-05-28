@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc0d8094904e11498e2dcf511ab1b23, type: 3}
   m_Name: HookBoost
   m_EditorClassIdentifier: 
-  storyText: Press SHIFT while hooked to swing
+  storyText: Hold SHIFT/RB while hooked to swing

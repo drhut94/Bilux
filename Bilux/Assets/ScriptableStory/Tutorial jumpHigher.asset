@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc0d8094904e11498e2dcf511ab1b23, type: 3}
   m_Name: Tutorial jumpHigher
   m_EditorClassIdentifier: 
-  storyText: Hold SPACE to jump higher
+  storyText: "Hold SPACE or \u24B6 \nto jump higher"
